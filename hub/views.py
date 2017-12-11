@@ -49,15 +49,19 @@ def branch(request):
 
 def create_branch(request):
     if request.method == "POST":
-        name = request.POST.get('new_branch')
-        models.new_branch('/home/picher/workSpace/rep_for_bob/', name)
-        status = 0
+        name = request.POST.get('proBranch')
+        print(name)
+        models.new_switch_branch('/home/picher/workSpace/rep_for_bob/', name)
         result = "Create new branch success!"
         print(result)
-        return HttpResponse(json.dumps({
-            "status": status,
-            "result": result
-        }))
+
+def switch_branch(request):
+    if request.method == "POST":
+        name = request.POST.get('switch_branch')
+        models.switch_branch('/home/picher/workSpace/rep_for_bob/', name)
+        result = "switch branch success!"
+        print(result)
+
 
 
 def register(request):

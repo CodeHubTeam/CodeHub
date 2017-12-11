@@ -13,7 +13,7 @@
    <head>
    <meta charset="utf-8">
    <title>bootstrap测试</title>
-   <link href="../static/bootstrap.min.css" rel="stylesheet" />
+   <link href="/static/bootstrap.min.css" rel="stylesheet" />
 </head>
    <body>
    
@@ -51,9 +51,10 @@
 </ul>
 <br>
 
-<form class="form-inline" style="float:right">
+<form class="form-inline" action="proBranch" method="post" style="float:right">
+    {% csrf_token %}
   <div class="form-group">
-    <input type="text" class="form-control" placeholder="输入新分支名...">
+    <input type="text" name="branchName" class="form-control" placeholder="输入新分支名...">
   </div>
   <button type="submit" class="btn btn-default">新建分支</button>
 </form>
@@ -121,8 +122,8 @@
 </div>
  
  
- <script src="../static/jquery.min.js"></script>
-   <script src="../static/bootstrap.min.js"></script>
+ <script src="/static/jquery.min.js"></script>
+   <script src="/static/bootstrap.min.js"></script>
 
    </body>
 </html>

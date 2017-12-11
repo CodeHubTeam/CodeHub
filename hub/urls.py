@@ -8,8 +8,9 @@ urlpatterns = [
     url(r'^register', views.register, name='register'),
     url(r'^projectCatalogR', views.processRegister, name='processRegister'),
     url(r'^projectCatalogL', views.proceLogin, name='processLogin'),
-    url(r'^projectCreate', views.processCreate),
+    url(r'^projectCreate', views.process_project_create),
     url(r'^code', views.code),
     url(r'^branch', views.branch),
+    url(r'^proBranch', views.create_branch),
     #url(r'^edit/action/', views.edit_action, name = 'edit_action'),
 ]
