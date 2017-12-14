@@ -118,14 +118,14 @@ def proceLogin(request):
 
 def process_project_create(request):
     if request.method == 'POST':#dir_name是绝对路径例如/home/bob/apps/CodeHub/XYJ
-        # user = request.user#还要把user写入session
-        # user_path = request.user.user_path
+        user = request.user#还要把user写入session
+        user_path = request.user.user_path
         project_name = request.POST.get('project_name')
         description = request.POST.get('description')
-        # dir_name = create_dir(user_path+'/'+project_name)
+        dir_name = create_dir(user_path+'/'+project_name)
         print(project_name,description)
-        # create_usr_dir(dir_name)
-        # project = Project(project_name = project_name,description = description,repo_path = dir_name,lead_user = user)
-        # project.save()
+        create_usr_dir(dir_name)
+        project = Project(project_name = project_name,description = description,repo_path = dir_name,lead_user = user)
+        project.save()
     else:
         return render_to_response('projectCreate.html')
