@@ -1,9 +1,0 @@
-/home/picher/workSpace/codeHub/libgit2-0.26.0/CMakeFiles/install/strip.dir
-/home/picher/workSpace/codeHub/libgit2-0.26.0/CMakeFiles/install.dir
-/home/picher/workSpace/codeHub/libgit2-0.26.0/CMakeFiles/libgit2_clar.dir
-/home/picher/workSpace/codeHub/libgit2-0.26.0/CMakeFiles/git2.dir
-/home/picher/workSpace/codeHub/libgit2-0.26.0/CMakeFiles/install/local.dir
-/home/picher/workSpace/codeHub/libgit2-0.26.0/CMakeFiles/test.dir
-/home/picher/workSpace/codeHub/libgit2-0.26.0/CMakeFiles/list_install_components.dir
-/home/picher/workSpace/codeHub/libgit2-0.26.0/CMakeFiles/edit_cache.dir
-/home/picher/workSpace/codeHub/libgit2-0.26.0/CMakeFiles/rebuild_cache.dir

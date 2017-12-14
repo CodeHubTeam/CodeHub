@@ -144,17 +144,26 @@ def all_commit(working_dir,all, edit_msg, usr_name, usr_email):
 
 # 分支操作模块
 # 合并分支
-def merge(dir, reference, msg):
+def merge(dir, branch_str, msg):
     repo = Repository(dir)
-    other_branch_ref = repo.lookup_reference(reference)
-    other_branch_tip = other_branch_ref.target
-    # repo.merge(other_branch_tip)
-    print('merge complete!')
-    user = repo.default_signature
-    tree = repo.index.write_tree()
-    message = msg
-    new_commit = repo.create_commit('HEAD', user, user, message, tree, [repo.head.target, other_branch_tip])
-    print(new_commit)
+    try:
+        branch = repo.branches[branch_str]
+        repo.branches.get(branch_str)
+        other_branch_tip = branch.target
+        user = repo.default_signature
+        tree = repo.index.write_tree()
+        message = msg
+        if msg=="":
+            print("Message is empty!")
+            print("Message is set to 'new commit'")
+            message = "new commit"
+        new_commit = repo.create_commit('HEAD', user, user, message, tree, [repo.head.target, other_branch_tip])
+        print('Merge success!')
+        print(new_commit)
+        return True
+    except:
+        print('Merge failed!')
+        return False
 
 # 下面是一些简单的分支操作
 # 显示所有的branch,所有的引用,并返回一个branch列表,用户登陆的时候可以调用
@@ -165,6 +174,12 @@ def show_branches_refs(dir):
     all_refs = list(repo.references)
     print(all_refs)
     return branches_list
+# 返回当前head指向的分支
+def current_branch(dir):
+    repo = Repository(dir)
+    head_branch = repo.head.name
+    head_branch = head_branch[11:]
+    return head_branch
 # 新建并且切换分支
 def new_switch_branch(working_dir, branch_name):
     repo = Repository(working_dir + '.git')
@@ -181,13 +196,24 @@ def new_branch(working_dir, branch_name):
 # 切换分支
 def switch_branch(working_dir, branch_name):
     repo = Repository(working_dir + '.git')
-    print('switch to: ' + branch_name)
-    branch = repo.branches[branch_name]
-    repo.checkout('refs/heads/' + branch.branch_name)
+    print('switching to: ' + branch_name)
+    try:
+        repo.branches[branch_name]
+        branch = repo.branches[branch_name]
+        repo.checkout('refs/heads/' + branch.branch_name)
+        print('Switch success!')
+        return True
+    except:
+        print('Switch failed!')
+        return False
+
 # 删除分支
 def delete_branch(working_dir, branch_name):
     repo = Repository(working_dir + '.git')
+    other_branch = repo.branches.get(branch_name)
+    branch = repo.branches[branch_name]
     repo.branches.delete(branch_name)
+    print('Delete success!')
 
 
 # 调试函数，查看 pygit2 部署情况

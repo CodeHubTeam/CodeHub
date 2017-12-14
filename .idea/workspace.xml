@@ -2,97 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1144e3db-f749-46f3-b66a-ffe52230900c" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/.___init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/._admin.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/._apps.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/._migrations" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/._models.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/._static" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/._templates" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/._tests.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/._urls.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/._views.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/._Img" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/._bootstrap.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/._bootstrap.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/._jquery.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/._loginRegister" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/._mainPage" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/._projectCatalog" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/._css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/._img" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/._includes" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/._js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/css/._fucking-ie-8-and-lower.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/css/._media.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/css/._style.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/includes/._bootstrap" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/includes/._contact-form" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/includes/._font-awesome-4.2.0" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/includes/._litebox" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/includes/._owl-carousel" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/includes/._wow-js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/includes/bootstrap/._css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/includes/bootstrap/._fonts" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/includes/bootstrap/._js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/includes/bootstrap/css/._bootstrap.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/includes/bootstrap/fonts/._glyphicons-halflings-regular.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/includes/bootstrap/fonts/._glyphicons-halflings-regular.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/includes/bootstrap/fonts/._glyphicons-halflings-regular.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/includes/bootstrap/fonts/._glyphicons-halflings-regular.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/includes/contact-form/._app.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/includes/contact-form/._mailer.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/includes/contact-form/._validatr.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/includes/font-awesome-4.2.0/._css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/includes/font-awesome-4.2.0/._fonts" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/includes/font-awesome-4.2.0/css/._font-awesome.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/includes/font-awesome-4.2.0/fonts/._fontawesome-webfont.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/includes/font-awesome-4.2.0/fonts/._fontawesome-webfont.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/includes/font-awesome-4.2.0/fonts/._fontawesome-webfont.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/includes/font-awesome-4.2.0/fonts/._fontawesome-webfont.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/includes/litebox/._images-loaded.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/includes/litebox/._litebox-close.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/includes/litebox/._litebox-next.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/includes/litebox/._litebox-prev.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/includes/litebox/._litebox.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/includes/litebox/._litebox.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/includes/owl-carousel/._AjaxLoader.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/includes/owl-carousel/._grabbing.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/includes/owl-carousel/._owl.carousel.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/includes/owl-carousel/._owl.carousel.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/js/._custom.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/js/._ie-opacity-polyfill.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/js/._isotope.pkgd.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/js/._jquery.counterup.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/js/._jquery.easing.1.3.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/js/._jquery.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/js/._jquery.nav.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/js/._jquery.nicescroll.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/js/._jquery.scrolly.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/mainPage/js/._jquery.sticky.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/projectCatalog/._assets" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/projectCatalog/assets/._css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/projectCatalog/assets/._img" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/projectCatalog/assets/._scripts" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/static/projectCatalog/assets/._vendor" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/templates/._branch.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/templates/._code.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/templates/._code_edit.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/templates/._code_file.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/templates/._code_new.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/templates/._commit.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/templates/._index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/templates/._login.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/templates/._mainPage.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/templates/._member.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/templates/._projectCatalog.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/templates/._projectCreate.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hub/templates/._register.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/codeHub.iml" afterPath="$PROJECT_DIR$/.idea/codeHub.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hub/templates/branch.html" afterPath="$PROJECT_DIR$/hub/templates/branch.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hub/templates/code.html" afterPath="$PROJECT_DIR$/hub/templates/code.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hub/urls.py" afterPath="$PROJECT_DIR$/hub/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hub/views.py" afterPath="$PROJECT_DIR$/hub/views.py" />
     </list>
@@ -108,8 +18,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/hub/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="53" column="38" lean-forward="false" selection-start-line="53" selection-start-column="38" selection-end-line="53" selection-end-column="38" />
+            <state relative-caret-position="-110">
+              <caret line="63" column="48" lean-forward="true" selection-start-line="63" selection-start-column="48" selection-end-line="63" selection-end-column="48" />
               <folding>
                 <element signature="e#24#63#0" expanded="true" />
               </folding>
@@ -121,7 +31,7 @@
         <entry file="file://$PROJECT_DIR$/manage.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="289">
-              <caret line="18" column="59" lean-forward="true" selection-start-line="18" selection-start-column="59" selection-end-line="18" selection-end-column="59" />
+              <caret line="18" column="59" lean-forward="false" selection-start-line="18" selection-start-column="59" selection-end-line="18" selection-end-column="59" />
               <folding />
             </state>
           </provider>
@@ -130,7 +40,7 @@
       <file leaf-file-name="code.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hub/templates/code.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="484">
+            <state relative-caret-position="1734">
               <caret line="102" column="16" lean-forward="false" selection-start-line="102" selection-start-column="16" selection-end-line="102" selection-end-column="16" />
               <folding />
             </state>
@@ -140,8 +50,8 @@
       <file leaf-file-name="branch.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hub/templates/branch.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="365">
-              <caret line="54" column="11" lean-forward="false" selection-start-line="54" selection-start-column="11" selection-end-line="54" selection-end-column="11" />
+            <state relative-caret-position="918">
+              <caret line="54" column="20" lean-forward="false" selection-start-line="54" selection-start-column="20" selection-end-line="54" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -150,7 +60,7 @@
       <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/codehub/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="518">
+            <state relative-caret-position="2040">
               <caret line="120" column="23" lean-forward="false" selection-start-line="120" selection-start-column="23" selection-end-line="120" selection-end-column="23" />
               <folding />
             </state>
@@ -160,8 +70,8 @@
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hub/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="65" lean-forward="false" selection-start-line="8" selection-start-column="65" selection-end-line="8" selection-end-column="65" />
+            <state relative-caret-position="170">
+              <caret line="12" column="34" lean-forward="false" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
@@ -172,8 +82,8 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hub/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="25" column="40" lean-forward="true" selection-start-line="25" selection-start-column="40" selection-end-line="25" selection-end-column="40" />
+            <state relative-caret-position="2754">
+              <caret line="168" column="48" lean-forward="false" selection-start-line="168" selection-start-column="48" selection-end-line="168" selection-end-column="48" />
               <folding>
                 <element signature="e#24#63#0" expanded="true" />
               </folding>
@@ -205,8 +115,8 @@
         <option value="$PROJECT_DIR$/exper/test1/models.py" />
         <option value="$PROJECT_DIR$/hub/models.py" />
         <option value="$PROJECT_DIR$/hub/templates/code.html" />
-        <option value="$PROJECT_DIR$/hub/urls.py" />
         <option value="$PROJECT_DIR$/hub/templates/branch.html" />
+        <option value="$PROJECT_DIR$/hub/urls.py" />
         <option value="$PROJECT_DIR$/hub/views.py" />
       </list>
     </option>
@@ -231,8 +141,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -322,18 +232,19 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="4" y="0" width="1920" height="1044" extended-state="6" />
+    <frame x="4" y="0" width="1928" height="1048" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14887941" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15368196" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39487725" sideWeight="0.50208336" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932165" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932165" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2428884" sideWeight="0.49791667" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39934355" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32056892" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -352,7 +263,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/hub/views.py</url>
-          <line>53</line>
+          <line>55</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
@@ -361,318 +272,112 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/exper/.idea/misc.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exper/test1/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/exper/.idea/misc.xml" />
+    <entry file="file://$PROJECT_DIR$/exper/test1/__init__.py" />
     <entry file="file://$PROJECT_DIR$/exper/test1/migrations/0001_initial.py" />
-    <entry file="file://$PROJECT_DIR$/exper/test1/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2057">
-          <caret line="125" column="36" lean-forward="false" selection-start-line="125" selection-start-column="35" selection-end-line="125" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exper/.idea/misc.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="10" lean-forward="false" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exper/test1/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/exper/test1/models.py" />
+    <entry file="file://$PROJECT_DIR$/exper/.idea/misc.xml" />
+    <entry file="file://$PROJECT_DIR$/exper/test1/__init__.py" />
     <entry file="file://$PROJECT_DIR$/exper/test1/migrations/0001_initial.py" />
-    <entry file="file://$PROJECT_DIR$/exper/test1/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2516">
-          <caret line="152" column="0" lean-forward="true" selection-start-line="152" selection-start-column="0" selection-end-line="152" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exper/.idea/misc.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exper/test1/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1326">
-          <caret line="78" column="0" lean-forward="false" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/exper/test1/models.py" />
+    <entry file="file://$PROJECT_DIR$/exper/.idea/misc.xml" />
+    <entry file="file://$PROJECT_DIR$/exper/test1/models.py" />
     <entry file="file://$PROJECT_DIR$/exper/test1/migrations/0001_initial.py" />
-    <entry file="file://$PROJECT_DIR$/exper/.idea/misc.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="10" lean-forward="false" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exper/test1/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/exper/.idea/misc.xml" />
+    <entry file="file://$PROJECT_DIR$/exper/test1/__init__.py" />
     <entry file="file://$PROJECT_DIR$/exper/test1/migrations/0001_initial.py" />
-    <entry file="file://$PROJECT_DIR$/exper/test1/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="35" lean-forward="true" selection-start-line="20" selection-start-column="35" selection-end-line="20" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exper/.idea/misc.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="10" lean-forward="false" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exper/test1/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/exper/test1/models.py" />
+    <entry file="file://$PROJECT_DIR$/exper/.idea/misc.xml" />
+    <entry file="file://$PROJECT_DIR$/exper/test1/__init__.py" />
     <entry file="file://$PROJECT_DIR$/exper/test1/migrations/0001_initial.py" />
-    <entry file="file://$PROJECT_DIR$/exper/test1/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1003">
-          <caret line="59" column="12" lean-forward="true" selection-start-line="59" selection-start-column="12" selection-end-line="59" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exper/.idea/misc.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="10" lean-forward="false" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exper/test1/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/exper/test1/models.py" />
+    <entry file="file://$PROJECT_DIR$/exper/.idea/misc.xml" />
+    <entry file="file://$PROJECT_DIR$/exper/test1/__init__.py" />
     <entry file="file://$PROJECT_DIR$/exper/test1/migrations/0001_initial.py" />
-    <entry file="file://$PROJECT_DIR$/exper/test1/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="24" lean-forward="true" selection-start-line="29" selection-start-column="24" selection-end-line="29" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exper/.idea/misc.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="10" lean-forward="false" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/exper/test1/models.py" />
+    <entry file="file://$PROJECT_DIR$/exper/.idea/misc.xml" />
     <entry file="file://$PROJECT_DIR$/exper/test1/migrations/0001_initial.py" />
-    <entry file="file://$PROJECT_DIR$/exper/test1/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="41" column="29" lean-forward="false" selection-start-line="41" selection-start-column="29" selection-end-line="41" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exper/.idea/misc.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exper/test1/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="37" column="32" lean-forward="true" selection-start-line="37" selection-start-column="32" selection-end-line="37" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exper/.idea/misc.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="10" lean-forward="false" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exper/test1/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="37" column="6" lean-forward="false" selection-start-line="37" selection-start-column="6" selection-end-line="37" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exper/.idea/misc.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="10" lean-forward="false" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exper/test1/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="36" column="24" lean-forward="false" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exper/.idea/misc.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exper/.idea/misc.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/exper/test1/models.py" />
+    <entry file="file://$PROJECT_DIR$/exper/.idea/misc.xml" />
+    <entry file="file://$PROJECT_DIR$/exper/test1/models.py" />
+    <entry file="file://$PROJECT_DIR$/exper/.idea/misc.xml" />
+    <entry file="file://$PROJECT_DIR$/exper/test1/models.py" />
+    <entry file="file://$PROJECT_DIR$/exper/.idea/misc.xml" />
+    <entry file="file://$PROJECT_DIR$/exper/test1/models.py" />
+    <entry file="file://$PROJECT_DIR$/exper/.idea/misc.xml" />
+    <entry file="file://$PROJECT_DIR$/exper/.idea/misc.xml" />
     <entry file="file://$PROJECT_DIR$/exper/test1/migrations/models/git_models.py" />
     <entry file="file://$PROJECT_DIR$/exper/test1/models/__init__.py" />
-    <entry file="file://$PROJECT_DIR$/exper/test1/migrations/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/exper/test1/migrations/__init__.py" />
     <entry file="file://$PROJECT_DIR$/exper/test1/models/usr_models.py" />
     <entry file="file://$PROJECT_DIR$/exper/test1/models/git_models.py" />
-    <entry file="file://$PROJECT_DIR$/exper/test1/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="166" column="46" lean-forward="false" selection-start-line="166" selection-start-column="46" selection-end-line="166" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exper/test1/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/exper/test1/models.py" />
+    <entry file="file://$PROJECT_DIR$/exper/test1/__init__.py" />
     <entry file="file://$PROJECT_DIR$/exper/test1/migrations/0001_initial.py" />
-    <entry file="file://$PROJECT_DIR$/exper/.idea/misc.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="3" column="10" lean-forward="false" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/exper/.idea/misc.xml" />
     <entry file="file://$PROJECT_DIR$/hub/static/mainPage/css/fucking-ie-8-and-lower.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="27" lean-forward="true" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hub/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="40" lean-forward="true" selection-start-line="25" selection-start-column="40" selection-end-line="25" selection-end-column="40" />
-          <folding>
-            <element signature="e#24#63#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codehub/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="120" column="23" lean-forward="false" selection-start-line="120" selection-start-column="23" selection-end-line="120" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hub/templates/branch.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="54" column="11" lean-forward="false" selection-start-line="54" selection-start-column="11" selection-end-line="54" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hub/templates/code.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="102" column="16" lean-forward="false" selection-start-line="102" selection-start-column="16" selection-end-line="102" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/manage.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
-          <caret line="18" column="59" lean-forward="true" selection-start-line="18" selection-start-column="59" selection-end-line="18" selection-end-column="59" />
+          <caret line="18" column="59" lean-forward="false" selection-start-line="18" selection-start-column="59" selection-end-line="18" selection-end-column="59" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hub/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2754">
+          <caret line="168" column="48" lean-forward="false" selection-start-line="168" selection-start-column="48" selection-end-line="168" selection-end-column="48" />
+          <folding>
+            <element signature="e#24#63#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hub/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="65" lean-forward="false" selection-start-line="8" selection-start-column="65" selection-end-line="8" selection-end-column="65" />
+        <state relative-caret-position="170">
+          <caret line="12" column="34" lean-forward="false" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/hub/templates/code.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1734">
+          <caret line="102" column="16" lean-forward="false" selection-start-line="102" selection-start-column="16" selection-end-line="102" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hub/templates/branch.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="918">
+          <caret line="54" column="20" lean-forward="false" selection-start-line="54" selection-start-column="20" selection-end-line="54" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/codehub/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2040">
+          <caret line="120" column="23" lean-forward="false" selection-start-line="120" selection-start-column="23" selection-end-line="120" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/hub/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="53" column="38" lean-forward="false" selection-start-line="53" selection-start-column="38" selection-end-line="53" selection-end-column="38" />
+        <state relative-caret-position="-110">
+          <caret line="63" column="48" lean-forward="true" selection-start-line="63" selection-start-column="48" selection-end-line="63" selection-end-column="48" />
           <folding>
             <element signature="e#24#63#0" expanded="true" />
           </folding>

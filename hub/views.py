@@ -43,26 +43,46 @@ def code(request):
 
 def branch(request):
     data = models.show_branches_refs('/home/picher/workSpace/rep_for_bob/')
-    return render(request, 'branch.html', {
-            'List': json.dumps(data),
-        })
+    return render(request, 'branch.html', {'data': data})
+
 
 def create_branch(request):
     if request.method == "POST":
-        name = request.POST.get('proBranch')
-        print(name)
-        models.new_switch_branch('/home/picher/workSpace/rep_for_bob/', name)
+        name = request.POST.get('new_branch')
+        models.new_branch('/home/picher/workSpace/rep_for_bob/', name)
+        status = 0
         result = "Create new branch success!"
         print(result)
+        data = models.show_branches_refs('/home/picher/workSpace/rep_for_bob/')
+        return render(request, 'branch.html', {'data': data})
+
+#def delete_branch(request):
+
+def delete_branch(request):
+    #if request.method == "POST":
+    name = request.GET.get('branch_name')
+    models.delete_branch('/home/picher/workSpace/rep_for_bob/', name)
+    result = "Delete new branch success!"
+    print(result)
+    data = models.show_branches_refs('/home/picher/workSpace/rep_for_bob/')
+    return render(request, 'branch.html', {'data': data})
+
+def merge_branch(request):
+    frombranch = request.POST.get('frombranch')
+    msg = request.POST.get('message')
+    frombranch_exist = models.merge('/home/picher/workSpace/rep_for_bob/',frombranch,msg)
+    if frombranch_exist:
+        data = models.show_branches_refs('/home/picher/workSpace/rep_for_bob/')
+        return render(request, 'branch.html', {'data': data})
+    else:
+        data = models.show_branches_refs('/home/picher/workSpace/rep_for_bob/')
+        return render(request, 'branch.html', {'data': data})
 
 def switch_branch(request):
-    if request.method == "POST":
-        name = request.POST.get('switch_branch')
-        models.switch_branch('/home/picher/workSpace/rep_for_bob/', name)
-        result = "switch branch success!"
-        print(result)
-
-
+    tobranch = request.POST.get('tobranch')
+    models.switch_branch('/home/picher/workSpace/rep_for_bob/', tobranch)
+    data = models.show_branches_refs('/home/picher/workSpace/rep_for_bob/')
+    return render(request, 'branch.html', {'data': data})
 
 def register(request):
     return render(request,'register.html')
