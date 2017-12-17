@@ -5,7 +5,6 @@ import pygit2
 from pygit2 import Repository
 import time
 import os
-
 # 以下功能函数负责git端的通信操作
 # 目录操作：
 # 如果没有特殊的说明,穿进来的凡是文件夹，只需要传入仓库的路径即可
@@ -31,13 +30,13 @@ def create_dir(path):
 # 用户 jerry 注册了一个新账号:SCUT_JERRY
 # 则用户主目录的绝对路径为：/home/bob/apps/CodeHub/SCUT_JERRY
 def create_usr_dir(dir_name):
-    git.create_dir(dir_name)
+    create_dir(dir_name)
     print('Building a bare git repo for usr,', dir_name)
     repo = pygit2.init_repository(dir_name, bare=True)
     print("Bare repo for usr is:", repo)
 # 创建 git 用户项目目录，需要完整的绝对路径作为参数，即‘用户主目录+项目名称’
 def create_working_dir(dir_name):
-    git.create_dir(dir_name)
+    create_dir(dir_name)
     local_dir = dir_name
     print('Creating a working dir for usr repo', local_dir)
     repo = pygit2.init_repository(local_dir, False)
@@ -48,7 +47,10 @@ def create_working_dir(dir_name):
 def show_HEAD_commit(dir):
     repo = Repository(dir + '.git')
     commit = repo[repo.head.target]
-    print(commit.message)
+    # 下面的代码可以返回格式很好的time，以及提交人名字，提交信息
+    local_time = time.localtime(commit.author.time+28800)
+    timeStr = time.strftime('%Y-%m-%d %H:%M:%S', local_time)
+    print(commit.message,timeStr,commit.committer.name)
 # git log 查看git日志
 def log(dir):
     repo = Repository(dir)
@@ -77,10 +79,18 @@ def change_commit(working_dir, wenjian, edit_msg, usr_name, usr_email):
     index.write()
     oid = index.write_tree()
     author = pygit2.Signature(usr_name, usr_email, int(time.time()), 480)
-    reference_name = repo.head.name
-    father = repo.head.target
-    repo.create_commit(reference_name, author, author, edit_msg, oid, [father])
-    print('Commit complete successfully! Time is ',time.localtime())
+    print(repo.head_is_unborn)
+    if repo.head_is_unborn:
+        reference_name = 'refs/heads/master'
+        repo.create_commit(reference_name, author, author, edit_msg, oid, [])
+        print('First commit complete successfully! Congratulations! Time is ', time.localtime())
+    else:
+        father = repo.head.target
+        reference_name = repo.head.name
+        print(father, reference_name)
+        repo.create_commit(reference_name, author, author, edit_msg, oid, [father])
+        print('Commit complete successfully! Time is ', time.localtime())
+
 # 未测试！提交所有的修改
 def all_commit(working_dir,all, edit_msg, usr_name, usr_email):
     repo = Repository(working_dir + '.git')
