@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from django.http import HttpResponseRedirect, Http404
 from django.shortcuts import render, render_to_response
 from . import models
+from django.urls import reverse
 from .models import User, project_user, Project
 from django.shortcuts import get_object_or_404, render
 import pygit2
@@ -35,7 +36,7 @@ def create_dir(path):
 def create_usr_dir(dir_name):
     #git.create_dir(dir_name)
     print('Building a bare git repo for usr,', dir_name)
-    repo = pygit2.init_repository(dir_name+'/.git', bare=True)
+    repo = pygit2.init_repository(dir_name+'/.git', bare=False)
     print("Bare repo for usr is:", repo)
 
 
@@ -64,21 +65,24 @@ def code(request, *args, **kwargs):
     print ("22222222222")
 """
 def code(request):
-    try:
-        print 'code'
-        print request.GET.get('project_owner'),request.GET.get('project_name')
-        project = Project.objects.get(project_name=request.GET.get('project_name'),lead_user=request.GET.get('project_owner'))
-        #project = Project.objects.get(project_id=res)
-        request.session['now_project_id'] = project.project_id
-        request.session['now_project_name'] = project.project_name
-        request.session['now_project_owner'] = project.lead_user.user_name
-        request.session['now_project_repo_path'] = codehub_path + '/' +project.lead_user.user_name+ '/'+project.project_name+'/'
-        files = os.listdir(codehub_path + project.repo_path)
-        print (files)
-        print ('***************')
-        print (codehub_path + project.repo_path)
-    except Project.DoesNotExist:
-        raise Http404("Project does not exist")
+    #try:
+    print 'code'
+    p_owner,p_name = request.GET.get('project_owner'),request.GET.get('project_name')
+    if p_owner == None:
+        p_owner,p_name = request.session['now_project_owner'],request.session['now_project_name']
+    print p_owner,p_name
+    project = Project.objects.get(project_name=p_name,lead_user=p_owner)
+    #project = Project.objects.get(project_id=res)
+    request.session['now_project_id'] = project.project_id
+    request.session['now_project_name'] = project.project_name
+    request.session['now_project_owner'] = project.lead_user.user_name
+    request.session['now_project_repo_path'] = codehub_path + '/' +project.lead_user.user_name+ '/'+project.project_name+'/'
+    files = os.listdir(codehub_path + project.repo_path)
+    print (files)
+    print ('***************')
+    print (codehub_path + project.repo_path)
+    #except Project.DoesNotExist:
+    #    raise Http404("Project does not exist")
     return render(request, 'code.html', {'project': project,'files': files})
 
 
@@ -129,6 +133,24 @@ def switch_branch(request):
 def register(request):
     return render(request,'register.html')
 
+def profile(request):
+    print ("注册中")
+    name = request.session['now_project_owner']
+    if name == request.session['user_name']:
+        is_user = True
+    else : is_user = False
+    theuser = get_object_or_404(User, pk=name)
+    # print(theuser)
+    # print("---------------")
+    pro_list = []
+
+    pro_id_list = project_user.objects.filter(user_name=request.session['user_name'])
+    for i, j in enumerate(pro_id_list):
+        pro_list.append(Project.objects.get(pk=j.project_id))
+    print (pro_list)
+    print (request.session['user_name'])
+    return render(request, 'projectCatalog.html', {'projects': pro_list,'is_user':is_user})
+
 def processRegister(request):
     print ("注册中")
     name = request.POST.get('name')
@@ -148,7 +170,8 @@ def processRegister(request):
             pro_list.append(Project.objects.get(pk=j.project_id))
         print (pro_list)
         print (request.session['user_name'])
-        return render(request, 'projectCatalog.html', {'projects': pro_list})
+        is_user = True
+        return render(request, 'projectCatalog.html', {'projects': pro_list,'is_user':is_user})
     else:
         theuser = get_object_or_404(User, pk=name)
         # print(theuser)
@@ -163,7 +186,8 @@ def processRegister(request):
                 pro_list.append(Project.objects.get(pk=j.project_id))
             print (pro_list)
             print (request.session['user_name'])
-        return render(request, 'projectCatalog.html', {'projects': pro_list})
+        is_user = True
+        return render(request, 'projectCatalog.html', {'projects': pro_list,'is_user':is_user})
 
 """
 def proceLogin(request):
@@ -196,16 +220,19 @@ def process_project_create(request):
         project_name = request.POST.get('project_name')
         description = request.POST.get('description')
         dir_name = create_dir(codehub_path+'/'+request.session['user_name']+'/'+project_name)
+        repo_path = request.session['user_name']+'/'+project_name+'/'
         print(project_name,description)
         create_usr_dir(dir_name)
         #project = Project(project_name = project_name,repo_path = dir_name,lead_user = get_object_or_404(User, pk=request.session['user_name']))
         #project.save()#description = description,
         print 'sdsfsdf'
-        tem = models.Project.objects.create(project_name = project_name,repo_path = dir_name,lead_user = get_object_or_404(User, pk=request.session['user_name']))
+        tem = models.Project.objects.create(project_name = project_name,repo_path = repo_path,lead_user = get_object_or_404(User, pk=request.session['user_name']))
         print tem
         print tem.project_id
         models.project_user.objects.create(project_id = tem.project_id,user_name = get_object_or_404(User, pk=request.session['user_name']))
         print 'sssssssss'
+        request.session['now_project_owner'],request.session['now_project_name'] = request.session['user_name'],project_name
+        return HttpResponseRedirect(reverse('hub:code'))
     #else:
     return render(request, 'projectCreate.html')
 
@@ -243,12 +270,15 @@ def upload(request):
         return render_to_response('upload.html')
     elif request.method == 'POST':
         obj = request.FILES.get('fafafa')
-        f = open(os.path.join('Codehub',obj.name),'wb')
+        f = open(os.path.join('hub','repo',request.session['now_project_owner'],request.session['now_project_name'],obj.name),'wb')
         print f
         print '@@@@@@@@@@@@@@@@'
         for line in obj.chunks():
             f.write(line)
         f.close()
+        print '33333333'
+        mygit.change_commit(codehub_path+os.path.join(request.session['now_project_owner'],request.session['now_project_name'])+'/',obj.name,'test','admin','admin@gmail.com')
+        print '********'
         return render_to_response('upload.html')
 # 	pro_id = 1
 # 	all_members = models.project_user.objects.filter(project_id=pro_id)

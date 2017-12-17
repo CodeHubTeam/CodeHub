@@ -115,6 +115,7 @@
 					<h4>{{ project.project_name }}</h4>
 				</div>
 				{% endfor %}
+				{% if is_user %}
 				<div <!-- class="col-md-2"ui relaxed horizontal selection list " -->
 
 					<div >
@@ -124,6 +125,7 @@
 					</div>
 					<h4>添加新的项目</h4>
 				</div>
+				{% endif %}
 								<!-- <div class="card-panel text-center">dsssccvd</div> -->
 			</div>
 		</div>

@@ -13,7 +13,9 @@ urlpatterns = [
     #url(r'^projectCreate', views.processCreate),
     url(r'^projectCreate', views.process_project_create, name='process_project_create'),
     url(r'^upload', views.upload),
-    url(r'^code', views.code),
+    url(r'^code', views.code, name='code'),
+
+    url(r'^profile', views.profile),
 
     url(r'^branch', views.branch),
     url(r'^create_new_branch', views.create_branch, name='newbranch'),

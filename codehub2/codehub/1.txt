@@ -1,4 +1,0 @@
-3
-N123;Object-Oriented Programming;Dave Smith;2009;3
-A251;UML Modelling and Design;Barry Arthur;2005;1
-Z001;Practical Guide to STL;John Johnson;2000;5
