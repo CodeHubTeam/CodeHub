@@ -179,6 +179,10 @@ def processRegister(request):
         pro_list = []
         if theuser.password != password:
             print ("wrong password")
+            list = ["密码错误"]
+            print json.dumps(list)
+            print 123
+            return render(request,'login.html',{'List':json.dumps(list)})
         else:
             request.session['user_name'] = name
             pro_id_list = project_user.objects.filter(user_name=request.session['user_name'])
