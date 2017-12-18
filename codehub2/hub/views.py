@@ -33,11 +33,11 @@ def create_dir(path):
         print ('该项目已存在')
         return path
         #return False
-def create_usr_dir(dir_name):
-    #git.create_dir(dir_name)
-    print('Building a bare git repo for usr,', dir_name)
-    repo = pygit2.init_repository(dir_name+'/.git', bare=False)
-    print("Bare repo for usr is:", repo)
+# def create_usr_dir(dir_name):
+#     #git.create_dir(dir_name)
+#     print('Building a bare git repo for usr,', dir_name)
+#     repo = pygit2.init_repository(dir_name+'/.git', bare=False)
+#     print("Bare repo for usr is:", repo)
 
 
 # Create your views here.
@@ -222,7 +222,7 @@ def process_project_create(request):
         dir_name = create_dir(codehub_path+'/'+request.session['user_name']+'/'+project_name)
         repo_path = request.session['user_name']+'/'+project_name+'/'
         print(project_name,description)
-        create_usr_dir(dir_name)
+        mygit.create_working_dir(dir_name,request.session['user_name'])
         #project = Project(project_name = project_name,repo_path = dir_name,lead_user = get_object_or_404(User, pk=request.session['user_name']))
         #project.save()#description = description,
         print 'sdsfsdf'

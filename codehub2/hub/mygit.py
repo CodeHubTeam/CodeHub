@@ -35,11 +35,15 @@ def create_usr_dir(dir_name):
     repo = pygit2.init_repository(dir_name, bare=True)
     print("Bare repo for usr is:", repo)
 # 创建 git 用户项目目录，需要完整的绝对路径作为参数，即‘用户主目录+项目名称’
-def create_working_dir(dir_name):
+def create_working_dir(dir_name,usr_name):
     create_dir(dir_name)
     local_dir = dir_name
     print('Creating a working dir for usr repo', local_dir)
-    repo = pygit2.init_repository(local_dir, False)
+    repo = pygit2.init_repository(local_dir+'/.git', False)
+    fobj = open(dir_name+'/README', 'w')
+    fobj.write('\n' + 'NEW PROJECT!=.=')  # 这里的\n的意思是在源文件末尾换行，即新加内容另起一行插入。
+    fobj.close()
+    change_commit(local_dir+'/co', 'README', 'Welcome to codeHub!',usr_name , 'bob@qq.com')
     print('New repo for usr is:', repo)
 # 提交记录模块
 # 显示最新的和所有的记录，暂时只能显示提交附带的msg，不能显示出作者提交人和时间等信息
