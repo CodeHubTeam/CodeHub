@@ -173,12 +173,27 @@ def processRegister(request):
         is_user = True
         return render(request, 'projectCatalog.html', {'projects': pro_list,'is_user':is_user})
     else:
-        theuser = get_object_or_404(User, pk=name)
+        #theuser = get_object_or_404(User, pk=name)
+
+        ff = models.User.objects.filter(user_name=name)
+        """if len(ff) == 0: 
+            print ("wrong password")
+            list = ["密码或用户名错误"]
+            print json.dumps(list)
+            print 123
+            return render(request,'login.html',{'List':json.dumps(list)})
+        """
         # print(theuser)
         # print("---------------")
+        if len(ff)!=0:theuser = ff[0]
         pro_list = []
-        if theuser.password != password:
+        if len(ff)==0 or theuser.password!= password:
             print ("wrong password")
+            list = ["密码或用户名错误"]
+            print json.dumps(list)
+            print 123
+            return render(request,'login.html',{'List':json.dumps(list)})
+            #return HttpResponseRedirect(reverse('hub:login'),{'List':json.dumps(list)})
         else:
             request.session['user_name'] = name
             pro_id_list = project_user.objects.filter(user_name=request.session['user_name'])

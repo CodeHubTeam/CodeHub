@@ -36,12 +36,70 @@
 
 	<!-- Modernizr JS -->
 	<script src="../static/loginRegister/js/modernizr-2.6.2.min.js"></script>
+<!--         <script type="text/javascript">
+	function disp_alert()
+	{
+		alert("老板跑路，缺资金，未做！")
+	}
+	</script> -->
+	<style>
+             #msg{
+                height: 2rem;
+   		text-align: center;
+   		position: fixed;
+    		top: 5%;
+    		margin-top: -1rem;
+    		line-height: 2rem;
+    		width: 100%;
+    		}
+		#msg span{
+    			color: #ffffff;
+    			background-color: #00aa00;
+    			height: 2rem;
+    			display: inline-block;
+    			padding: 0 10rem;
+    			border-radius: 5px;
+			}
+        </style>
         <script type="text/javascript">
-function disp_alert()
-{
-alert("老板跑路，缺资金，未做！")
-}
-</script>
+        function clearmsg(){
+    		var t = setTimeout(function(){
+        	$("#msg").remove();
+    		},2000)
+	};
+
+	function alertNo()
+	{document.write('1111111')
+	    var h = "不存在"
+	    document.write($("body"))
+	    document.write('333333')
+	    $("body").append("<div id='msg'><span>"+h+"</span></div>");
+	{#     $("body").append("<div class=\"alert alert-warning\">"+h+"</div>");#}
+	{#    $("body").append("<div class="alert alert-warning">h</div>");#}
+	    clearmsg();
+//document.write('22222222')
+	{#   alert(h)#}
+	}
+	function disp_alert(h)
+	{
+		//alert("密码或用户名错误")
+		//alertNo()
+		document.write('4444444')
+		var c = "不存在"
+	    $("body").append("<div id='msg'><span>"+c+"</span></div>");
+		
+	    //$("body").append("<div id='msg'><span>"+h+"</span></div>");
+	    
+	{#    $("body").append("<div class="alert alert-warning">h</div>");#}
+	
+	    clearmsg();
+
+
+	{#   alert(h)#}
+
+	}
+	 
+	</script>
 
 	<!-- FOR IE9 below -->
 	<!--[if lt IE 9]>
@@ -84,7 +142,7 @@ alert("老板跑路，缺资金，未做！")
 {#							<label for="remember"><input type="checkbox" id="remember">记住密码</label>#}
 {#						</div>#}
 						<div class="form-group">
-							<p>不可以登录? <a href="register.html">注册</a> | <a onclick="disp_alert()">忘记密码?</a></p>
+							<p>不可以登录? <a href="register.html">注册</a> | <a onclick="alertNo()">忘记密码?</a></p>
 						</div>
 						<div class="form-group">
 							<input type="submit" value="登录" class="btn btn-primary">
@@ -109,6 +167,30 @@ alert("老板跑路，缺资金，未做！")
 	<script src="../static/loginRegister/js/jquery.waypoints.min.js"></script>
 	<!-- Main JS -->
 	<script src="../static/loginRegister/js/main.js"></script>
+
+	
+	<script>
+                var List = {{ List|safe }}
+                //alert(List)
+                    if(List == "密码或用户名错误") 
+		    {
+		    	        document.write('sdfsfs')
+		    	        	 var h = "不存在"
+						    //document.write($("body"))
+						    document.write('333333')
+						    $("body").append("<div id='msg'><span>"+h+"</span></div>");
+						{#     $("body").append("<div class=\"alert alert-warning\">"+h+"</div>");#}
+						{#    $("body").append("<div class="alert alert-warning">h</div>");#}
+						    clearmsg();
+
+
+		    	        //alertNo()
+                        //disp_alert(List)
+                        //alert('sdfsd')
+                        document.write('sdfdsgreger')
+                    }
+        </script>
+
 
 	</body>
 </html>

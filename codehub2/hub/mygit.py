@@ -43,7 +43,7 @@ def create_working_dir(dir_name,usr_name):
     fobj = open(dir_name+'/README', 'w')
     fobj.write('\n' + 'NEW PROJECT!=.=')  # 这里的\n的意思是在源文件末尾换行，即新加内容另起一行插入。
     fobj.close()
-    change_commit(local_dir+'/co', 'README', 'Welcome to codeHub!',usr_name , 'bob@qq.com')
+    change_commit(local_dir+'/', 'README', 'Welcome to codeHub!',usr_name , 'bob@qq.com')
     print('New repo for usr is:', repo)
 # 提交记录模块
 # 显示最新的和所有的记录，暂时只能显示提交附带的msg，不能显示出作者提交人和时间等信息
