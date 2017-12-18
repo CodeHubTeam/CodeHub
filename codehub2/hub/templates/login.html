@@ -36,12 +36,12 @@
 
 	<!-- Modernizr JS -->
 	<script src="../static/loginRegister/js/modernizr-2.6.2.min.js"></script>
-        <script type="text/javascript">
+<!--         <script type="text/javascript">
 	function disp_alert()
 	{
 		alert("老板跑路，缺资金，未做！")
 	}
-	</script>
+	</script> -->
 	<style>
              #msg{
                 height: 2rem;
@@ -77,6 +77,16 @@
 
 	{#   alert(h)#}
 
+	}
+	 function alertNo()
+	{
+	    var h = "不存在"
+	    $("body").append("<div id='msg'><span>"+h+"</span></div>");
+	{#     $("body").append("<div class=\"alert alert-warning\">"+h+"</div>");#}
+	{#    $("body").append("<div class="alert alert-warning">h</div>");#}
+	    clearmsg();
+
+	{#   alert(h)#}
 	}
 	</script>
 
@@ -121,7 +131,7 @@
 {#							<label for="remember"><input type="checkbox" id="remember">记住密码</label>#}
 {#						</div>#}
 						<div class="form-group">
-							<p>不可以登录? <a href="register.html">注册</a> | <a onclick="disp_alert()">忘记密码?</a></p>
+							<p>不可以登录? <a href="register.html">注册</a> | <a onclick="alertNo()">忘记密码?</a></p>
 						</div>
 						<div class="form-group">
 							<input type="submit" value="登录" class="btn btn-primary">
