@@ -54,10 +54,10 @@
     		}
 		#msg span{
     			color: #ffffff;
-   			 background: rgba(0,0,0,0.6);
+    			background-color: #00aa00;
     			height: 2rem;
     			display: inline-block;
-    			padding: 0 3rem;
+    			padding: 0 10rem;
     			border-radius: 5px;
 			}
         </style>
@@ -68,26 +68,37 @@
     		},2000)
 	};
 
-	function disp_alert(h)
-	{
-	{#    $("body").append("<div id='msg'><span>"+h+"</span></div>");#}
-	     $("body").append("<div class=\"alert alert-warning\">"+h+"</div>");
-	{#    $("body").append("<div class="alert alert-warning">h</div>");#}
-	    clearmsg();
-
-	{#   alert(h)#}
-
-	}
-	 function alertNo()
-	{
+	function alertNo()
+	{document.write('1111111')
 	    var h = "不存在"
+	    document.write($("body"))
+	    document.write('333333')
 	    $("body").append("<div id='msg'><span>"+h+"</span></div>");
 	{#     $("body").append("<div class=\"alert alert-warning\">"+h+"</div>");#}
 	{#    $("body").append("<div class="alert alert-warning">h</div>");#}
 	    clearmsg();
-
+//document.write('22222222')
 	{#   alert(h)#}
 	}
+	function disp_alert(h)
+	{
+		//alert("密码或用户名错误")
+		//alertNo()
+		document.write('4444444')
+		var c = "不存在"
+	    $("body").append("<div id='msg'><span>"+c+"</span></div>");
+		
+	    //$("body").append("<div id='msg'><span>"+h+"</span></div>");
+	    
+	{#    $("body").append("<div class="alert alert-warning">h</div>");#}
+	
+	    clearmsg();
+
+
+	{#   alert(h)#}
+
+	}
+	 
 	</script>
 
 	<!-- FOR IE9 below -->
@@ -145,15 +156,7 @@
 				<div class="col-md-12 text-center"><p><small>&copy; All Rights Reserved. More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></small></p></div>
 			</div> -->
 		</div>
-	#密码错误提示框
-	<script>
-
-                var List = {{ List|safe }}
-                    if(List == "密码错误") 
-		    {
-                        disp_alert(List)
-                    }
-        </script>
+	
 	<!-- jQuery -->
 	<script src="../static/loginRegister/js/jquery.min.js"></script>
 	<!-- Bootstrap -->
@@ -164,6 +167,30 @@
 	<script src="../static/loginRegister/js/jquery.waypoints.min.js"></script>
 	<!-- Main JS -->
 	<script src="../static/loginRegister/js/main.js"></script>
+
+	
+	<script>
+                var List = {{ List|safe }}
+                //alert(List)
+                    if(List == "密码或用户名错误") 
+		    {
+		    	        document.write('sdfsfs')
+		    	        	 var h = "不存在"
+						    //document.write($("body"))
+						    document.write('333333')
+						    $("body").append("<div id='msg'><span>"+h+"</span></div>");
+						{#     $("body").append("<div class=\"alert alert-warning\">"+h+"</div>");#}
+						{#    $("body").append("<div class="alert alert-warning">h</div>");#}
+						    clearmsg();
+
+
+		    	        //alertNo()
+                        //disp_alert(List)
+                        //alert('sdfsd')
+                        document.write('sdfdsgreger')
+                    }
+        </script>
+
 
 	</body>
 </html>
