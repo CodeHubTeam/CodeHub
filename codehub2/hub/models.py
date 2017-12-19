@@ -8,7 +8,7 @@ from django.db import models
 class User(models.Model):
 	"""docstring for User"""
 	user_name = models.CharField(primary_key=True,max_length=30)
-	mail = models.CharField(max_length=100)
+	email = models.CharField(max_length=100)
 	password = models.CharField(max_length=30)
 	def __str__(self):
 		return self.user_name

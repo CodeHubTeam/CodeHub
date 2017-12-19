@@ -27,7 +27,7 @@
   <!--button type="button" class="btn btn-default">username</button-->
   
 
-	<p class="navbar-text" style="font-family:arial;color:black;float:right">username  <a href="#" class="navbar-link">退出</a></p>
+	<p class="navbar-text" style="font-family:arial;color:black;float:right">{{request.session.user_name}}  <a href="login" class="navbar-link">退出</a></p>
   </div>
 </nav>
  <br>
@@ -39,7 +39,7 @@
   <div class="panel-heading" style="background-color:white">
 
 	<br>
-	<p style="font-family:arial;color:black;font-size:20px;"> <a href="#">username</a> / <a href="#">projectname</a></p>
+	<p style="font-family:arial;color:black;font-size:20px;"> <a href="profile.html">{{request.session.now_project_owner}}</a> / <a href="#">{{request.session.now_project_name}}</a></p>
 <hr>项目描述
   </div>
   <div class="panel-body">
@@ -76,17 +76,20 @@
 <br>
 <table class="table">
 	<tr>
-	<td>11-13 13:13</td>
-	<td>username1 进行了 xx 操作</td>
-	<td ></td>
-	<td ></td>
+	<td>提交信息</td>
+	<td></td>
+	<td >作者</td>
+	<td >时间</td>
 	</tr>
-	<tr>
-	<td>11-1 12:11</td>
-	<td>username2 进行了 xx 操作</td>
-	<td ></td>
-	<td ></td>
-	</tr>
+
+  {% for i in c_list %}
+          <tr>
+          <td>{{ i.0 }}</td>
+          <td style="text-align:right"></td>
+          <td >{{i.1}}</td>
+          <td >{{i.2}}</td>
+          </tr>
+  {% endfor %}
 </table>
 
   </div>

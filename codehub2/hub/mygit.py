@@ -35,7 +35,7 @@ def create_usr_dir(dir_name):
     repo = pygit2.init_repository(dir_name, bare=True)
     print("Bare repo for usr is:", repo)
 # 创建 git 用户项目目录，需要完整的绝对路径作为参数，即‘用户主目录+项目名称’
-def create_working_dir(dir_name,usr_name):
+def create_working_dir(dir_name,usr_name,usr_email):
     create_dir(dir_name)
     local_dir = dir_name
     print('Creating a working dir for usr repo', local_dir)
@@ -43,7 +43,7 @@ def create_working_dir(dir_name,usr_name):
     fobj = open(dir_name+'/README', 'w')
     fobj.write('\n' + 'NEW PROJECT!=.=')  # 这里的\n的意思是在源文件末尾换行，即新加内容另起一行插入。
     fobj.close()
-    change_commit(local_dir+'/', 'README', 'Welcome to codeHub!',usr_name , 'bob@qq.com')
+    change_commit(local_dir+'/', 'README', 'Welcome to codeHub!',usr_name , usr_email)
     print('New repo for usr is:', repo)
 # 提交记录模块
 # 显示最新的和所有的记录，暂时只能显示提交附带的msg，不能显示出作者提交人和时间等信息
@@ -55,12 +55,31 @@ def show_HEAD_commit(dir):
     local_time = time.localtime(commit.author.time+28800)
     timeStr = time.strftime('%Y-%m-%d %H:%M:%S', local_time)
     print(commit.message,timeStr,commit.committer.name)
+def time_change(t):
+    t = time.localtime(t+28800)
+    timeStr = time.strftime('%Y-%m-%d %H:%M:%S', t)
+    return timeStr
+
 # git log 查看git日志
 def log(dir):
     repo = Repository(dir)
     last = repo[repo.head.target]
+    c_list=[]
+    c_item=[]
+    c_mes,c_name,c_time=[],[],[]
     for commit in repo.walk(last.id, pygit2.GIT_SORT_TIME):
-        print(commit.message)
+        a , b,c =commit.message,commit.committer.name,time_change(commit.author.time)
+        #c_mes.append(a)
+        #c_name.append(b)
+        #c_time.append(c)
+        c_item.append(a)
+        c_item.append(b)
+        c_item.append(c)
+        c_list.append(c_item)
+        c_item = []
+    print  c_list
+    #return c_mes,c_name,c_time
+    return c_list
 
 # 提交文件模块
 # 编辑文件后提交,所有的对于单个文件的更,包括新建文件都可以调用这个函数
@@ -168,27 +187,3 @@ def check(dir):
     return repo
 
 
-
-
-import os.path
-sysdir = '/Users/sxyzc/repo/'
-#rootdir = '/home/picher/workSpace/rep_for_bob/'                                  # 指明被遍历的文件夹
-rootdir = sysdir + 'user01'
-def walk():
-    ttt = os.listdir(rootdir)
-    print ttt
-    return ttt
-    print '------------'
-    #for parent, dirnames, filenames in os.walk(rootdir):  # 三个参数：分别返回1.父目录 2.所有文件夹名字（不含路径） 3.所有文件名字
-    #    print parent
-    #    print dirnames
-    #    print filenames
-    #    print '--------------------'
-    """for dirname in dirnames:  # 输出文件夹信息
-        print "parent is:" + parent
-        print  "dirname is" + dirname
-        for filename in filenames:  # 输出文件信息
-            print "parent is: " + parent
-            print "filename is:" + filename
-            print "the full name of the file is:" + os.path.join(parent, filename)  # 输出文件路径信息
-    """

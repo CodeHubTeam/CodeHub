@@ -48,6 +48,9 @@ def mainPage(request):
     return render(request,'mainPage.html')
 
 def login(request):
+    print '!!!!!!!!!!!'
+    print request.session
+    if request.session['user_name'] != None: request.session['user_name']=None
     return render(request,'login.html')
 
 def code_test(request):
@@ -66,7 +69,8 @@ def code(request, *args, **kwargs):
 """
 def code(request):
     #try:
-    print 'code'
+
+    print '进入代码界面'
     p_owner,p_name = request.GET.get('project_owner'),request.GET.get('project_name')
     if p_owner == None:
         p_owner,p_name = request.session['now_project_owner'],request.session['now_project_name']
@@ -76,22 +80,35 @@ def code(request):
     request.session['now_project_id'] = project.project_id
     request.session['now_project_name'] = project.project_name
     request.session['now_project_owner'] = project.lead_user.user_name
-    request.session['now_project_repo_path'] = codehub_path + '/' +project.lead_user.user_name+ '/'+project.project_name+'/'
+    request.session['now_project_repo_path'] = codehub_path + project.lead_user.user_name + '/'+project.project_name+'/'
     files = os.listdir(codehub_path + project.repo_path)
     print (files)
+    print 'log test'
+    mygit.show_HEAD_commit(codehub_path + project.repo_path)
+    print '---------'
+    mygit.log(codehub_path + project.repo_path)
     print ('***************')
     print (codehub_path + project.repo_path)
     #except Project.DoesNotExist:
     #    raise Http404("Project does not exist")
     return render(request, 'code.html', {'project': project,'files': files})
 
+def commit(request):
+    print '进入提交记录界面'
+    #c_mes,c_name,c_time = mygit.log(request.session['now_project_repo_path'])
+    #c_len = len(c_mes)
+    c_list = mygit.log(request.session['now_project_repo_path'])
+    #return render(request, 'commit.html', {'c_mes': c_mes,'c_name':c_name,'c_time':c_time,'c_len':c_len})
+    return render(request, 'commit.html', {'c_list': c_list})
 
 def branch(request):
+    print '进入分支界面'
     data = mygit.show_branches_refs(request.session['now_project_repo_path'])
     return render(request, 'branch.html', {'data': data})
 
 
 def create_branch(request):
+    print '创建分支'
     if request.method == "POST":
         name = request.POST.get('new_branch')
         mygit.new_branch(request.session['now_project_repo_path'], name)
@@ -104,6 +121,7 @@ def create_branch(request):
 #def delete_branch(request):
 
 def delete_branch(request):
+    print '删除分支'
     #if request.method == "POST":
     name = request.GET.get('branch_name')
     mygit.delete_branch(request.session['now_project_repo_path'], name)
@@ -113,6 +131,7 @@ def delete_branch(request):
     return render(request, 'branch.html', {'data': data})
 
 def merge_branch(request):
+    print '合并分支'
     frombranch = request.POST.get('frombranch')
     msg = request.POST.get('message')
     frombranch_exist = mygit.merge(request.session['now_project_repo_path'],frombranch,msg)
@@ -124,6 +143,7 @@ def merge_branch(request):
         return render(request, 'branch.html', {'data': data})
 
 def switch_branch(request):
+    print '切换分支'
     tobranch = request.POST.get('tobranch')
     mygit.switch_branch(request.session['now_project_repo_path'], tobranch)
     data = mygit.show_branches_refs(request.session['now_project_repo_path'])
@@ -134,7 +154,7 @@ def register(request):
     return render(request,'register.html')
 
 def profile(request):
-    print ("注册中")
+    print ("进入主页")
     name = request.session['now_project_owner']
     if name == request.session['user_name']:
         is_user = True
@@ -152,7 +172,7 @@ def profile(request):
     return render(request, 'projectCatalog.html', {'projects': pro_list,'is_user':is_user})
 
 def processRegister(request):
-    print ("注册中")
+    print ("登录/注册中")
     name = request.POST.get('name')
     print (name)
     email = request.POST.get('email',"noemail")
@@ -162,7 +182,8 @@ def processRegister(request):
     rePassword = request.POST.get('rePassword','norepassword')
     print (rePassword)
     if email != "noemail":
-        print (models.User.objects.create(user_name=name,mail=email,password=password))
+        print (models.User.objects.create(user_name=name,email=email,password=password))
+        request.session['user_email'] = email
         pro_list = []
         request.session['user_name'] = name
         pro_id_list = project_user.objects.filter(user_name=request.session['user_name'])
@@ -195,6 +216,7 @@ def processRegister(request):
             return render(request,'login.html',{'List':json.dumps(list)})
             #return HttpResponseRedirect(reverse('hub:login'),{'List':json.dumps(list)})
         else:
+            request.session['user_email'] = theuser.email
             request.session['user_name'] = name
             pro_id_list = project_user.objects.filter(user_name=request.session['user_name'])
             for i, j in enumerate(pro_id_list):
@@ -229,15 +251,16 @@ def processCreate(request):
 
 
 def process_project_create(request):
+    print '创建项目'
     if request.method == 'POST':#dir_name是绝对路径例如/home/bob/apps/CodeHub/XYJ
         #user = request.session['user']#还要把user写入session
         #user_path = request.user.user_path
         project_name = request.POST.get('project_name')
         description = request.POST.get('description')
-        dir_name = create_dir(codehub_path+'/'+request.session['user_name']+'/'+project_name)
+        dir_name = create_dir(codehub_path+request.session['user_name']+'/'+project_name)
         repo_path = request.session['user_name']+'/'+project_name+'/'
         print(project_name,description)
-        mygit.create_working_dir(dir_name,request.session['user_name'])
+        mygit.create_working_dir(dir_name,request.session['user_name'],request.session['user_email'])
         #project = Project(project_name = project_name,repo_path = dir_name,lead_user = get_object_or_404(User, pk=request.session['user_name']))
         #project.save()#description = description,
         print 'sdsfsdf'
@@ -256,9 +279,8 @@ def member(request):
 #def member(request, *args, **kwargs):
     #print args
 
-    print ('member!!!!!!!!!!!!!!!!!!!!')
+    print ('进入成员界面')
     pro_id  = request.session['now_project_id']
-    print ('member')
 
     input_member = request.POST.get('i_name', "ffff")
     #pro_id = 1
@@ -281,6 +303,7 @@ def member(request):
     print (len(all_members),"#########")
     return render(request, 'member.html', {"members": all_members})
 def upload(request):
+    print '上传'
     if request.method == 'GET':
         return render_to_response('upload.html')
     elif request.method == 'POST':
@@ -292,7 +315,7 @@ def upload(request):
             f.write(line)
         f.close()
         print '33333333'
-        mygit.change_commit(codehub_path+os.path.join(request.session['now_project_owner'],request.session['now_project_name'])+'/',obj.name,'test','admin','admin@gmail.com')
+        mygit.change_commit(codehub_path+os.path.join(request.session['now_project_owner'],request.session['now_project_name'])+'/',obj.name,'upload',request.session['user_name'],request.session['user_email'])
         print '********'
         return render_to_response('upload.html')
 # 	pro_id = 1
