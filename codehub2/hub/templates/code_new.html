@@ -39,7 +39,7 @@
   <div class="panel-heading" style="background-color:white">
 
 	<br>
-	<p style="font-family:arial;color:black;font-size:20px;"> <a href="#">username</a> / <a href="#">projectname</a></p>
+  <p style="font-family:arial;color:black;font-size:20px;"> <a href="profile.html">{{request.session.now_project_owner}}</a> / <a href="code.html">{{request.session.now_project_name}}</a></p>
 <hr>项目描述
   </div>
   <div class="panel-body">
@@ -66,26 +66,27 @@
 				<li><a href="#">Separated link</a></li>
 			</ul>
 </div>
+<form action="{% url 'CodeHub:process_new' %}" method="post" >
 <p style="float:left">&nbsp;&nbsp;</p>
-<p style="font-family:arial;color:black;font-size:20px;float:left"> <a href="#">projectname</a>&nbsp;&nbsp;/&nbsp;&nbsp;<form class="form-inline" style="float:left">
+<p style="font-family:arial;color:black;font-size:20px;float:left"> <a href="#">projectname</a>&nbsp;&nbsp;/&nbsp;&nbsp;
   <div class="form-group">
-    <input type="text" class="form-control" placeholder="输入新的文件名...">
+    <input type="text" name="title" class="form-control" placeholder="输入新的文件名...">
   </div>
-</form></p>
+</p>
 
 <br>
 <br>
 <br>
 
-<textarea class="form-control" placeholder="输入文件内容..." rows="40"></textarea>
+<textarea class="form-control" name="data" placeholder="输入文件内容..." rows="40"></textarea>
 <br>
 <p style="font-family:arial;color:black;font-size:18px;"> 提交说明：</p>
-<textarea class="form-control" placeholder="输入提交说明..." rows="5"></textarea>
+<textarea class="form-control" name="commit_message" placeholder="输入提交说明..." rows="5"></textarea>
 	<br>
   <button type="button" class="btn btn-default" style="float:right"><a href="code.html">取消</a></button>
   <p style="float:right">&nbsp;&nbsp;&nbsp;</p>
-  <button type="button" class="btn btn-default" style="float:right">提交</button>
-
+  <button type="submit" class="btn btn-default" style="float:right">提交</button>
+</form>
   </div>
   
   

@@ -109,14 +109,55 @@ def code(request):
     #    raise Http404("Project does not exist")
     return render(request, 'code.html', {'project': project,'files': files,'data':data})
 
+def code_edit(request):
+    print '代码修改界面'
+    file_name = request.session['now_file_name']
+    with open(request.session['now_project_repo_path']+file_name,'r') as f:
+        data = f.read()
+    return render(request,'code_edit.html', {'data': data,'title': file_name})
+
 def code_file(request, *args, **kwargs):
     #print args
     #file_name = (kwargs['file_name'])
     file_name = request.GET.get('file_name')
+    if file_name == None: file_name = request.session['now_file_name']
+    else: request.session['now_file_name']=file_name
     with open(request.session['now_project_repo_path']+file_name,'r') as f:
         data = f.read()
     return render(request, 'code_file.html', {'data': data,'title': file_name})
     #mycat_id = kwargs['pk']
+
+def process_edit(request, *args, **kwargs):
+    #print args
+    #file_name = (kwargs['file_name'])
+    print '处理代码修改'
+    data = request.POST.get('data')
+    commit_message = request.POST.get('commit_message')
+    file_name = request.session['now_file_name']
+    with open(request.session['now_project_repo_path']+file_name,'w') as f:
+        f.write(data)
+    mygit.change_commit(request.session['now_project_repo_path'],file_name,commit_message,request.session['user_name'],request.session['user_email'])
+    return HttpResponseRedirect(reverse('hub:code_file'))
+
+def code_new(request):
+    print '代码新建界面'
+    return render(request,'code_new.html')
+
+
+def process_new(request, *args, **kwargs):
+    #print args
+    #file_name = (kwargs['file_name'])
+    print '处理代码新建'
+    data = request.POST.get('data')
+    commit_message = request.POST.get('commit_message')
+    file_name = request.POST.get('title')
+    request.session['now_file_name']=file_name
+    with open(request.session['now_project_repo_path']+file_name,'w') as f:
+        f.write(data)
+    mygit.change_commit(request.session['now_project_repo_path'],file_name,commit_message,request.session['user_name'],request.session['user_email'])
+    return HttpResponseRedirect(reverse('hub:code_file'))
+
+
 
 def commit(request):
     print '进入提交记录界面'

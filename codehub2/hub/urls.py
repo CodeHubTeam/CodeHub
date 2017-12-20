@@ -13,7 +13,11 @@ urlpatterns = [
     #url(r'^projectCreate', views.processCreate),
     url(r'^projectCreate', views.process_project_create, name='process_project_create'),
     url(r'^upload', views.upload),
-    url(r'^code_file', views.code_file),
+    url(r'^code_file', views.code_file,name='code_file'),
+    url(r'^code_edit', views.code_edit,name='code_edit'),
+    url(r'^process_edit', views.process_edit,name='process_edit'),
+    url(r'^code_new', views.code_new,name='code_new'),
+    url(r'^process_new', views.process_new,name='process_new'),
     url(r'^code', views.code, name='code'),
     url(r'^commit', views.commit, name='commit'),
 

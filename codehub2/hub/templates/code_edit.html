@@ -39,7 +39,7 @@
   <div class="panel-heading" style="background-color:white">
 
 	<br>
-	<p style="font-family:arial;color:black;font-size:20px;"> <a href="#">username</a> / <a href="#">projectname</a></p>
+  <p style="font-family:arial;color:black;font-size:20px;"> <a href="profile.html">{{request.session.now_project_owner}}</a> / <a href="#">{{request.session.now_project_name}}</a></p>
 <hr>项目描述
   </div>
   <div class="panel-body">
@@ -73,15 +73,16 @@
 <br>
 <br>
 
-<textarea class="form-control" rows="40">文件内容...</textarea>
+<form action="{% url 'CodeHub:process_edit' %}" method="post" >
+<textarea name="data" class="form-control" rows="40">{{data}}</textarea>
 <br>
 <p style="font-family:arial;color:black;font-size:18px;"> 提交说明：</p>
-<textarea class="form-control" placeholder="输入提交说明..." rows="5"></textarea>
+<textarea name="commit_message" class="form-control" placeholder="输入提交说明..." rows="5"></textarea>
 	<br>
   <button type="button" class="btn btn-default" style="float:right"><a href="code.html">取消</a></button>
   <p style="float:right">&nbsp;&nbsp;&nbsp;</p>
-  <button type="button" class="btn btn-default" style="float:right">提交</button>
-
+  <button type="submit" class="btn btn-default" style="float:right">提交</button>
+</form>
   </div>
   
   
