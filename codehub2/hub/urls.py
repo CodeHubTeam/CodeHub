@@ -13,6 +13,7 @@ urlpatterns = [
     #url(r'^projectCreate', views.processCreate),
     url(r'^projectCreate', views.process_project_create, name='process_project_create'),
     url(r'^upload', views.upload),
+    url(r'^code_file', views.code_file),
     url(r'^code', views.code, name='code'),
     url(r'^commit', views.commit, name='commit'),
 
@@ -24,6 +25,7 @@ urlpatterns = [
     url(r'^delete', views.delete_branch, name='deletebranch'),
     url(r'^merge', views.merge_branch, name='mergebranch'),
     url(r'^switch', views.switch_branch, name='switchbranch'),
+    url(r'^code_switch', views.code_switch_branch, name='code_switchbranch'),
 
     url(r'^member', views.member,name='proMem'),
     #url(r'^[\S]+/[\S]+/member', views.member,name='proMem'),

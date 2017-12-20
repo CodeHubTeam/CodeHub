@@ -114,6 +114,10 @@ def change_commit(working_dir, wenjian, edit_msg, usr_name, usr_email):
         repo.create_commit(reference_name, author, author, edit_msg, oid, [father])
         print('Commit complete successfully! Time is ', time.localtime())
 
+def get_head_branch(working_dir):
+    repo = Repository(working_dir + '.git')
+    return repo.head.name
+
 # 未测试！提交所有的修改
 def all_commit(working_dir,all, edit_msg, usr_name, usr_email):
     repo = Repository(working_dir + '.git')

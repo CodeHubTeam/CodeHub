@@ -56,6 +56,18 @@ def login(request):
 def code_test(request):
     return render(request,'code.html')
 
+def code_switch_branch(request):
+    print '切换分支'
+    tobranch = request.POST.get('tobranch')
+    mygit.switch_branch(request.session['now_project_repo_path'], tobranch)
+    #data = mygit.show_branches_refs(request.session['now_project_repo_path'])
+    request.session['head_branch']=tobranch
+    #p_owner,p_name = request.session['now_project_owner'],request.session['now_project_name']
+    #project = Project.objects.get(project_name=p_name,lead_user=p_owner)
+    #files = os.listdir(request.session['now_project_repo_path'])
+    return HttpResponseRedirect(reverse('hub:code'))
+    #return render(request, 'code.html', {'project': project,'files': files,'data':data})
+
 #def code(request, project_owner, project_id):
 #
 """
@@ -71,6 +83,7 @@ def code(request):
     #try:
 
     print '进入代码界面'
+
     p_owner,p_name = request.GET.get('project_owner'),request.GET.get('project_name')
     if p_owner == None:
         p_owner,p_name = request.session['now_project_owner'],request.session['now_project_name']
@@ -81,20 +94,33 @@ def code(request):
     request.session['now_project_name'] = project.project_name
     request.session['now_project_owner'] = project.lead_user.user_name
     request.session['now_project_repo_path'] = codehub_path + project.lead_user.user_name + '/'+project.project_name+'/'
-    files = os.listdir(codehub_path + project.repo_path)
+    files = os.listdir(request.session['now_project_repo_path'])
     print (files)
     print 'log test'
     mygit.show_HEAD_commit(codehub_path + project.repo_path)
     print '---------'
     mygit.log(codehub_path + project.repo_path)
     print ('***************')
+    head_branch = mygit.get_head_branch(request.session['now_project_repo_path']).split('/')[-1]
+    request.session['head_branch']=head_branch
     print (codehub_path + project.repo_path)
+    data = mygit.show_branches_refs(request.session['now_project_repo_path'])
     #except Project.DoesNotExist:
     #    raise Http404("Project does not exist")
-    return render(request, 'code.html', {'project': project,'files': files})
+    return render(request, 'code.html', {'project': project,'files': files,'data':data})
+
+def code_file(request, *args, **kwargs):
+    #print args
+    #file_name = (kwargs['file_name'])
+    file_name = request.GET.get('file_name')
+    with open(request.session['now_project_repo_path']+file_name,'r') as f:
+        data = f.read()
+    return render(request, 'code_file.html', {'data': data,'title': file_name})
+    #mycat_id = kwargs['pk']
 
 def commit(request):
     print '进入提交记录界面'
+
     #c_mes,c_name,c_time = mygit.log(request.session['now_project_repo_path'])
     #c_len = len(c_mes)
     c_list = mygit.log(request.session['now_project_repo_path'])
@@ -147,6 +173,7 @@ def switch_branch(request):
     tobranch = request.POST.get('tobranch')
     mygit.switch_branch(request.session['now_project_repo_path'], tobranch)
     data = mygit.show_branches_refs(request.session['now_project_repo_path'])
+    request.session['head_branch']=tobranch
     return render(request, 'branch.html', {'data': data})
 
 
