@@ -34,6 +34,8 @@ urlpatterns = [
 
     url(r'^member', views.member,name='proMem'),
     url(r'^delMem', views.delMem, name='delMem'),
+    url(r'^settings', views.settings),
+    url(r'^delProject', views.delProject, name='delProject'),
     #url(r'^[\S]+/[\S]+/member', views.member,name='proMem'),
     #url(r'^(?P<project_owner>[\S]+)/(?P<project_name>[\S]+)/member', views.member,name='proMem'),
     #url(r'^member', views.proMem,name='proMem'),
