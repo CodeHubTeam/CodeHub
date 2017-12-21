@@ -459,3 +459,10 @@ def proMem(request):
     return render(request, 'member.html', {"members": all_members})
     pass
 """
+def settings(request):
+    return render(request, 'settings.html')
+
+def delProject(request):
+    print "删除项目"
+    #return HttpResponseRedirect('/CodeHub/settings')
+    return render(request, 'settings.html')
