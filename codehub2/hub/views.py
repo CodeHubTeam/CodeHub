@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.http import HttpResponseRedirect, Http404
+from django.http import HttpResponseRedirect, Http404,HttpResponse
 from django.shortcuts import render, render_to_response
 from . import models
 from django.urls import reverse
@@ -79,6 +79,20 @@ def code(request, *args, **kwargs):
     #print(project_ii)
     print ("22222222222")
 """
+
+import zipfile
+def getZip(request):
+    print '压缩中'
+    z = zipfile.ZipFile('hub/static/my-archive.zip', 'w', zipfile.ZIP_DEFLATED)
+    startdir = request.session['now_project_repo_path']+'.'
+    for dirpath, dirnames, filenames in os.walk(startdir):
+        fpath = dirpath.replace(startdir,'')
+        fpath = fpath and fpath + os.sep or ''
+        for filename in filenames:
+            z.write(os.path.join(dirpath, filename),fpath+filename)
+    z.close()
+    return HttpResponse('my-archive.zip')
+
 def code(request):
     #try:
 

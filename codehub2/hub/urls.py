@@ -19,6 +19,7 @@ urlpatterns = [
     url(r'^code_new', views.code_new,name='code_new'),
     url(r'^process_new', views.process_new,name='process_new'),
     url(r'^code', views.code, name='code'),
+    url(r'^getZip', views.getZip, name='getZip'),
     url(r'^commit', views.commit, name='commit'),
 
 

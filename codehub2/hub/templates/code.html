@@ -86,7 +86,20 @@
     <input type="file" name="fafafa" />
     <input type="submit" value="上传" />
 </form> -->
-  <button type="button" class="btn btn-default"><a href="download.html">下载</a></button>
+  <!-- <button type="button" id="cloneOrDownload" class="btn btn-default"><a href="download.html">Clone或下载</a></button> -->
+  <div class="dropdown" style="float:left">
+      <button class="btn btn-default dropdown-toggle" type="button" id="cloneOrDownload" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Master
+          <span class="caret"></span>
+    </button>
+      <ul class="dropdown-menu" aria-labelledby="cloneOrDownload">
+        <li><a id="downloadZip" href="#">下载zip</a></li>
+        <li><a href="#">dev-2</a></li>
+        <li><a href="#">dev-3</a></li>
+        <li role="separator" class="divider"></li>
+        <li><a href="#">Separated link</a></li>
+      </ul>
+</div>
 </div>
 <br>
 <br>
@@ -118,6 +131,20 @@
  
    <script src="/static/jquery.min.js"></script>
    <script src="/static/bootstrap.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+      $("#cloneOrDownload").click(function(){
+        console.log("111111111")
+        //console.log(ret)
+        $.get("{% url 'CodeHub:getZip' %}",{}, function(ret){
+            console.log(ret)
+            $('#downloadZip').attr("href","/static/"+ret)
+        })
+
+      });
+    });
+</script>
 
    
       <script>
