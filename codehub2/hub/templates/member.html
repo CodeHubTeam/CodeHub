@@ -68,7 +68,9 @@
 	{% for menber in members %}
         <tr>
 	    <td>{{ menber.user_name }}</td>
-
+	    <td ><a href="{% url "CodeHub:delMem" %}?member_name={{ menber.user_name }}">
+            <button type="submit" class="btn btn-default" method='get' style="float:right" >删除</button></a>
+        </td>
 	<!--td>11-13 13:13</td>
 	<td ></td>
 	<td ><button type="button" style="float:right" class="btn btn-default">下载</button></td-->
