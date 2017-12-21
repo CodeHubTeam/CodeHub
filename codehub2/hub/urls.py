@@ -33,6 +33,7 @@ urlpatterns = [
     url(r'^code_switch', views.code_switch_branch, name='code_switchbranch'),
 
     url(r'^member', views.member,name='proMem'),
+    url(r'^delMem', views.delMem, name='delMem'),
     #url(r'^[\S]+/[\S]+/member', views.member,name='proMem'),
     #url(r'^(?P<project_owner>[\S]+)/(?P<project_name>[\S]+)/member', views.member,name='proMem'),
     #url(r'^member', views.proMem,name='proMem'),
