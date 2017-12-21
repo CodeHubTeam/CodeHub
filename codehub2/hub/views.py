@@ -384,6 +384,18 @@ def member(request):
     all_members = models.project_user.objects.filter(project_id=pro_id)
     print (len(all_members),"#########")
     return render(request, 'member.html', {"members": all_members})
+
+def delMem(request):
+    print "删除成员"
+    name = request.GET.get('member_name')
+    print name
+    pro_id = request.session['now_project_id']
+    models.project_user.objects.filter(project_id=pro_id,user_name=name).delete()
+    all_members = models.project_user.objects.filter(project_id=pro_id)
+    return render(request, 'member.html', {"members": all_members})
+    pass
+
+
 def upload(request):
     print '上传'
     if request.method == 'GET':
