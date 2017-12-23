@@ -7,11 +7,9 @@ urlpatterns = [
     url(r'^mainPage', views.mainPage),
     url(r'^login', views.login, name='login'),
     url(r'^register', views.register, name='register'),
-    url(r'^projectCatalog', views.processRegister, name='processRegister'),
-    url(r'^projectCatalog', views.processRegister, name='processLogin'),
-    #url(r'^projectCatalog', views.proceLogin, name='processLogin'),
-    #url(r'^projectCreate', views.processCreate),
-    url(r'^projectCreate', views.process_project_create, name='process_project_create'),
+    url(r'^profile', views.profile,name='profile'),
+
+    url(r'^projectCreate', views.project_create, name='project_create'),
     url(r'^upload', views.upload,name='upload'),
     url(r'^code_file', views.code_file,name='code_file'),
     url(r'^code_edit', views.code_edit,name='code_edit'),
@@ -20,10 +18,9 @@ urlpatterns = [
     url(r'^process_new', views.process_new,name='process_new'),
     url(r'^code', views.code, name='code'),
     url(r'^getZip', views.getZip, name='getZip'),
+
+
     url(r'^commit', views.commit, name='commit'),
-
-
-    url(r'^profile', views.profile,name='profile'),
 
     url(r'^branch', views.branch,name='branch'),
     url(r'^create_new_branch', views.create_branch, name='newbranch'),
@@ -35,6 +32,7 @@ urlpatterns = [
     url(r'^member', views.member,name='proMem'),
     url(r'^member', views.member,name='member'),
     url(r'^delMem', views.delMem, name='delMem'),
+    
     url(r'^settings', views.settings,name='settings'),
     url(r'^delProject', views.delProject, name='delProject'),
     #url(r'^[\S]+/[\S]+/member', views.member,name='proMem'),

@@ -9,41 +9,25 @@ import os
 # 目录操作：
 # 如果没有特殊的说明,穿进来的凡是文件夹，只需要传入仓库的路径即可
 # 用户注册成功后，应立即调用下面的create_usr_dir()函数生成文件夹和对应的git空目录
-# 创建文件夹，需要一个绝对路径作为参数
-def create_dir(path):
-    isExists = os.path.exists(path)
-    # 判断结果
-    if not isExists:
-        # 如果不存在则创建目录
-        # 创建目录操作函数
-        os.makedirs(path)
 
-        print '文件夹 ' + path + ' 创建成功'
-        return True
-    else:
-        # 如果目录存在则不创建，并提示目录已存在
-        print '文件夹 ' + path + ' 目录已存在'
-        return False
 # 创建 git 用户主目录，需要用户的主目录绝对路径
 # 例如：
 # codehub在：/home/bob/apps/CodeHub
 # 用户 jerry 注册了一个新账号:SCUT_JERRY
 # 则用户主目录的绝对路径为：/home/bob/apps/CodeHub/SCUT_JERRY
-def create_usr_dir(dir_name):
-    create_dir(dir_name)
+def init_usr_dir(dir_name):
     print('Building a bare git repo for usr,', dir_name)
     repo = pygit2.init_repository(dir_name, bare=True)
     print("Bare repo for usr is:", repo)
 # 创建 git 用户项目目录，需要完整的绝对路径作为参数，即‘用户主目录+项目名称’
-def create_working_dir(dir_name,usr_name,usr_email):
-    create_dir(dir_name)
+def init_working_dir(dir_name,usr_name,usr_email):
     local_dir = dir_name
     print('Creating a working dir for usr repo', local_dir)
     repo = pygit2.init_repository(local_dir+'/.git', False)
     fobj = open(dir_name+'/README', 'w')
     fobj.write('\n' + 'NEW PROJECT!=.=')  # 这里的\n的意思是在源文件末尾换行，即新加内容另起一行插入。
     fobj.close()
-    change_commit(local_dir+'/', 'README', 'Welcome to codeHub!',usr_name , usr_email)
+    change_commit(local_dir+'/', 'README', 'init commit',usr_name , usr_email)
     print('New repo for usr is:', repo)
 # 提交记录模块
 # 显示最新的和所有的记录，暂时只能显示提交附带的msg，不能显示出作者提交人和时间等信息

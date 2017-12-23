@@ -127,7 +127,7 @@
 					
 
 					<!-- Start Sign In Form -->
-					<form action="{% url "CodeHub:processLogin" %}" method="post" class="fh5co-form animate-box" data-animate-effect="fadeInLeft">
+					<form action="{% url "CodeHub:login" %}" method="post" class="fh5co-form animate-box" data-animate-effect="fadeInLeft">
                         {% csrf_token %}
                         <h2>登录</h2>
 						<div class="form-group">
