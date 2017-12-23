@@ -37,7 +37,7 @@ def code_switch_branch(request):
 
 def getZip(request):
     print '压缩中'
-    GitFileController.zip_dir('now_project_repo_path', 'hub/static/my-archive.zip')
+    GitFileController.zip_dir(request.session['now_project_repo_path'], 'hub/static/my-archive.zip')
     return HttpResponse('my-archive.zip')
 
 

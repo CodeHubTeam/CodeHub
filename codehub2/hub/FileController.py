@@ -19,6 +19,7 @@ def create_dir(path):
         return False
 
 def zip_dir(start_path,file_path):
+    print 'zipping'
     z = zipfile.ZipFile(file_path, 'w', zipfile.ZIP_DEFLATED)
     startdir = start_path+'.'
     for dirpath, dirnames, filenames in os.walk(startdir):
