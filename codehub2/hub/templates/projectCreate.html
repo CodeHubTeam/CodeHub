@@ -112,7 +112,7 @@
 				<form method="POST" action="/CodeHub/projectCreate/">
 					{% csrf_token %}
 					<div class="input-group" style="margin: 10px;">
-						<span class="input-group-addon">dynasty</span>
+						<span class="input-group-addon">{{request.session.user_name}}</span>
 						<span class="input-group-addon">/</span>
 						<input type="text" class="form-control" name="project_name">
 

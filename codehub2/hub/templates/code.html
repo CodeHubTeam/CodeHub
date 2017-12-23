@@ -13,7 +13,7 @@
    <head>
    <meta charset="utf-8">
    <title>bootstrap测试</title>
-   <link href="{% url 'hub:index' %}/../../static/bootstrap.min.css" rel="stylesheet" />
+   <link href="/static/bootstrap.min.css" rel="stylesheet" />
 </head>
    <body>
    
@@ -39,34 +39,22 @@
   <div class="panel-heading" style="background-color:white">
 
 	<br>
-	<p style="font-family:arial;color:black;font-size:20px;"> <a href="profile.html">{{request.session.now_project_owner}}</a> / <a href="#">{{request.session.now_project_name}}</a></p>
+  <p style="font-family:arial;color:black;font-size:20px;"> <a href="{% url 'CodeHub:profile' %}">{{request.session.now_project_owner}}</a> / <a href="{% url 'CodeHub:code' %}">{{request.session.now_project_name}}</a></p>
 <hr>项目描述
   </div>
   <div class="panel-body">
     <ul class="nav nav-tabs">
-  <li role="presentation" class="active"><a href="code.html">代码</a></li>
-  <li role="presentation"><a href="commit.html">提交记录</a></li>
-  <li role="presentation"><a href="branch.html">分支</a></li>
-  <li role="presentation"><a href="member.html">项目成员</a></li>
-	    <li role="presentation"><a href="settings.html">设置</a></li>
-</ul>
+      <li role="presentation" class="active"><a href="{% url 'CodeHub:code' %}">代码</a></li>
+      <li role="presentation"><a href="{% url 'CodeHub:commit' %}">提交记录</a></li>
+      <li role="presentation"><a href="{% url 'CodeHub:branch' %}">分支</a></li>
+      <li role="presentation"><a href="{% url 'CodeHub:member' %}">项目成员</a></li>
+      {%if request.session.is_leader %}
+          <li role="presentation"><a href="{% url 'CodeHub:settings' %}">设置</a></li>
+      {% endif %}
+    </ul>
 <br>
 
 
-
-<div class="dropdown" style="float:left">
-		  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-						Master
-					<span class="caret"></span>
-		</button>
-			<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-				<li><a href="#">dev-1</a></li>
-				<li><a href="#">dev-2</a></li>
-				<li><a href="#">dev-3</a></li>
-				<li role="separator" class="divider"></li>
-				<li><a href="#">Separated link</a></li>
-			</ul>
-</div>
 
 <div class="btn-group" style="float:left">
                         <button type="button" id="switch" class="btn btn-default dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -90,7 +78,7 @@
   <!-- <button type="button" id="cloneOrDownload" class="btn btn-default"><a href="download.html">Clone或下载</a></button> -->
   <div class="dropdown" style="float:left">
       <button class="btn btn-default dropdown-toggle" type="button" id="cloneOrDownload" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            Master
+            cloneOrDownload
           <span class="caret"></span>
     </button>
       <ul class="dropdown-menu" aria-labelledby="cloneOrDownload">

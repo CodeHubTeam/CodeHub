@@ -12,7 +12,7 @@ urlpatterns = [
     #url(r'^projectCatalog', views.proceLogin, name='processLogin'),
     #url(r'^projectCreate', views.processCreate),
     url(r'^projectCreate', views.process_project_create, name='process_project_create'),
-    url(r'^upload', views.upload),
+    url(r'^upload', views.upload,name='upload'),
     url(r'^code_file', views.code_file,name='code_file'),
     url(r'^code_edit', views.code_edit,name='code_edit'),
     url(r'^process_edit', views.process_edit,name='process_edit'),
@@ -23,9 +23,9 @@ urlpatterns = [
     url(r'^commit', views.commit, name='commit'),
 
 
-    url(r'^profile', views.profile),
+    url(r'^profile', views.profile,name='profile'),
 
-    url(r'^branch', views.branch),
+    url(r'^branch', views.branch,name='branch'),
     url(r'^create_new_branch', views.create_branch, name='newbranch'),
     url(r'^delete', views.delete_branch, name='deletebranch'),
     url(r'^merge', views.merge_branch, name='mergebranch'),
@@ -33,8 +33,9 @@ urlpatterns = [
     url(r'^code_switch', views.code_switch_branch, name='code_switchbranch'),
 
     url(r'^member', views.member,name='proMem'),
+    url(r'^member', views.member,name='member'),
     url(r'^delMem', views.delMem, name='delMem'),
-    url(r'^settings', views.settings),
+    url(r'^settings', views.settings,name='settings'),
     url(r'^delProject', views.delProject, name='delProject'),
     #url(r'^[\S]+/[\S]+/member', views.member,name='proMem'),
     #url(r'^(?P<project_owner>[\S]+)/(?P<project_name>[\S]+)/member', views.member,name='proMem'),

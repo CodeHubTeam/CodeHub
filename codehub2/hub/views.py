@@ -50,7 +50,7 @@ def mainPage(request):
 def login(request):
     print '!!!!!!!!!!!'
     print request.session
-    if request.session['user_name'] != None: request.session['user_name']=None
+    request.session['user_name']=None
     return render(request,'login.html')
 
 def code_test(request):
@@ -108,6 +108,12 @@ def code(request):
     request.session['now_project_name'] = project.project_name
     request.session['now_project_owner'] = project.lead_user.user_name
     request.session['now_project_repo_path'] = codehub_path + project.lead_user.user_name + '/'+project.project_name+'/'
+
+    #is_leader才能有设置界面，删除项目
+    if request.session['now_project_owner'] == request.session['user_name']:
+        request.session['is_leader'] = True
+    else: request.session['is_leader'] = False
+
     files = os.listdir(request.session['now_project_repo_path'])
     print (files)
     print 'log test'
@@ -263,38 +269,25 @@ def processRegister(request):
     print (password)
     rePassword = request.POST.get('rePassword','norepassword')
     print (rePassword)
+    pro_list = []
     if email != "noemail":
-        print (models.User.objects.create(user_name=name,email=email,password=password))
+        models.User.objects.create(user_name=name,email=email,password=password)
         request.session['user_email'] = email
-        pro_list = []
+        
         request.session['user_name'] = name
         pro_id_list = project_user.objects.filter(user_name=request.session['user_name'])
         for i, j in enumerate(pro_id_list):
             pro_list.append(Project.objects.get(pk=j.project_id))
-        print (pro_list)
-        print (request.session['user_name'])
-        is_user = True
-        return render(request, 'projectCatalog.html', {'projects': pro_list,'is_user':is_user})
     else:
         #theuser = get_object_or_404(User, pk=name)
 
         ff = models.User.objects.filter(user_name=name)
-        """if len(ff) == 0: 
-            print ("wrong password")
-            list = ["密码或用户名错误"]
-            print json.dumps(list)
-            print 123
-            return render(request,'login.html',{'List':json.dumps(list)})
-        """
-        # print(theuser)
-        # print("---------------")
+        
         if len(ff)!=0:theuser = ff[0]
-        pro_list = []
         if len(ff)==0 or theuser.password!= password:
             print ("wrong password")
             list = ["密码或用户名错误"]
             print json.dumps(list)
-            print 123
             return render(request,'login.html',{'List':json.dumps(list)})
             #return HttpResponseRedirect(reverse('hub:login'),{'List':json.dumps(list)})
         else:
@@ -303,10 +296,8 @@ def processRegister(request):
             pro_id_list = project_user.objects.filter(user_name=request.session['user_name'])
             for i, j in enumerate(pro_id_list):
                 pro_list.append(Project.objects.get(pk=j.project_id))
-            print (pro_list)
-            print (request.session['user_name'])
-        is_user = True
-        return render(request, 'projectCatalog.html', {'projects': pro_list,'is_user':is_user})
+    is_user = True
+    return render(request, 'projectCatalog.html', {'projects': pro_list,'is_user':is_user})
 
 """
 def proceLogin(request):
@@ -345,12 +336,8 @@ def process_project_create(request):
         mygit.create_working_dir(dir_name,request.session['user_name'],request.session['user_email'])
         #project = Project(project_name = project_name,repo_path = dir_name,lead_user = get_object_or_404(User, pk=request.session['user_name']))
         #project.save()#description = description,
-        print 'sdsfsdf'
         tem = models.Project.objects.create(project_name = project_name,repo_path = repo_path,lead_user = get_object_or_404(User, pk=request.session['user_name']))
-        print tem
-        print tem.project_id
         models.project_user.objects.create(project_id = tem.project_id,user_name = get_object_or_404(User, pk=request.session['user_name']))
-        print 'sssssssss'
         request.session['now_project_owner'],request.session['now_project_name'] = request.session['user_name'],project_name
         return HttpResponseRedirect(reverse('hub:code'))
     #else:
@@ -462,7 +449,16 @@ def proMem(request):
 def settings(request):
     return render(request, 'settings.html')
 
+import shutil
+
 def delProject(request):
     print "删除项目"
-    #return HttpResponseRedirect('/CodeHub/settings')
-    return render(request, 'settings.html')
+
+
+    pro_id = request.session['now_project_id']
+    models.project_user.objects.filter(project_id=pro_id).delete()
+    models.Project.objects.filter(project_id=pro_id).delete()
+    
+    shutil.rmtree(request.session['now_project_repo_path'])
+
+    return HttpResponseRedirect(reverse('hub:profile'))
