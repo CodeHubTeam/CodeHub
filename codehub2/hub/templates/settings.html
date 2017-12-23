@@ -39,7 +39,7 @@
   <div class="panel-heading" style="background-color:white">
 
 	<br>
-  <p style="font-family:arial;color:black;font-size:20px;"> <a href="profile.html">{{request.session.now_project_owner}}</a> / <a href="#">{{request.session.now_project_name}}</a></p>
+  <p style="font-family:arial;color:black;font-size:20px;"> <a href="{% url 'CodeHub:profile' %}">{{request.session.now_project_owner}}</a> / <a href="{% url 'CodeHub:code' %}">{{request.session.now_project_name}}</a></p>
 <hr>项目描述
   </div>
   <div class="panel-body">

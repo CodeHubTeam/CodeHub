@@ -40,7 +40,7 @@
                         {% endif %}
                       </ul>
                     <br>
-
+<p>{{data}}</p>
                     <div class="btn-group" style="float:left">
                         <button type="button" id="switch" class="btn btn-default dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{request.session.head_branch}}&nbsp;&nbsp;<span class="caret"></span>
@@ -82,13 +82,14 @@
                     <table class="table">
                         {% for branch in data %}
                         <tr>
-                            <td>{{ branch }}</td>
-                            <td ><a href="{% url "CodeHub:deletebranch" %}?branch_name={{ branch }}"><button type="submit" class="btn btn-default" method='get' style="float:right" >删除</button></a></td>
+                            <td >{{ branch }}</td>
+                            <td ><a href="{% url "CodeHub:branch" %}?branch_name={{ branch }}"><button type="submit" class="btn btn-default" method='get' style="float:right" >删除</button></a></td>
+                            <!-- <td ><button type="button" class="btn btn-default deleteBtn" style="float:right" >删除</button></td> -->
                         </tr>
                         {%endfor%}
                         <br>
                     </table>
-                    <form class="form-inline" action="{% url "CodeHub:newbranch" %}" method="post" style="float:right">
+                    <form class="form-inline" action="{% url "CodeHub:branch" %}" method="post" style="float:right">
                         {% csrf_token%}
                         <div class="form-group">
                             <input type="text"  name="new_branch" class="form-control" placeholder="输入新分支名...">
@@ -105,7 +106,7 @@
           function getSceneId() {
           console.log("dddddddddd")
              $.ajax({
-                 url: "{% url "CodeHub:newbranch" %}",
+                 url: "{% url "CodeHub:branch" %}",
                  type: "POST",
                  data: post_data,
              });
@@ -118,8 +119,21 @@
        if($(this).parent().parent().prev().attr("id")==="switch"){
             var to = ($("#switch").html()).split("&nbsp;&nbsp;");
             to_branch = to[0];
-            $.post("{% url 'CodeHub:switchbranch' %}",{'tobranch':to_branch});
+            $.post("{% url 'CodeHub:branch' %}",{'tobranch':to_branch});
        }
+      })
+   </script>
+    <script>
+      $(document).ready(function(){
+      $(".deleteBtn").click(function(){
+                //alert('sdfsdfsd')
+      console.log('sdfsdfsssssssssssssssss')
+       console.log($(this).parent().prev().html())
+        // var from = ($("#frombranch").html()).split("&nbsp;&nbsp;")
+        // from_branch = from[0]
+        // merge_msg = $("#mergemsg").val()
+        console.log( $.post("{% url 'CodeHub:branch' %}",{'branch_name':$(this).parent().prev().html()})  ) 
+      })
       })
    </script>
    <script>
@@ -129,7 +143,7 @@
         var from = ($("#frombranch").html()).split("&nbsp;&nbsp;")
         from_branch = from[0]
         merge_msg = $("#mergemsg").val()
-        $.post("{% url 'CodeHub:mergebranch' %}",{'frombranch':from_branch,'message':merge_msg})
+        $.post("{% url 'CodeHub:branch' %}",{'frombranch':from_branch,'message':merge_msg})
       })
       })
    </script>

@@ -53,16 +53,11 @@ def log(dir):
     c_mes,c_name,c_time=[],[],[]
     for commit in repo.walk(last.id, pygit2.GIT_SORT_TIME):
         a , b,c =commit.message,commit.committer.name,time_change(commit.author.time)
-        #c_mes.append(a)
-        #c_name.append(b)
-        #c_time.append(c)
         c_item.append(a)
         c_item.append(b)
         c_item.append(c)
         c_list.append(c_item)
         c_item = []
-    print  c_list
-    #return c_mes,c_name,c_time
     return c_list
 
 # 提交文件模块
@@ -121,6 +116,8 @@ def all_commit(working_dir,all, edit_msg, usr_name, usr_email):
 # 合并分支
 def merge(dir, reference, msg):
     repo = Repository(dir)
+    reference = "refs/heads/"+reference
+    print reference
     other_branch_ref = repo.lookup_reference(reference)
     other_branch_tip = other_branch_ref.target
     # repo.merge(other_branch_tip)
@@ -145,12 +142,17 @@ def new_switch_branch(working_dir, branch_name):
     repo = Repository(working_dir + '.git')
     commit = repo.revparse_single('HEAD')
     new_branch = repo.branches.create(branch_name, commit, force=False)
+    print 'refs/heads/' + new_branch.branch_name
+    print working_dir
+    print 'ddddddddddddddddd'
     repo.checkout('refs/heads/' + new_branch.branch_name)
     print('switch to a new branch: ' + branch_name)
 # 新建分支
 def new_branch(working_dir, branch_name):
     repo = Repository(working_dir + '.git')
     commit = repo.revparse_single('HEAD')
+    print working_dir
+    print 'sssssssssssssssssssss'
     new_branch = repo.branches.create(branch_name, commit, force=False)
     print('new branch ' + branch_name)
 # 切换分支
@@ -162,6 +164,7 @@ def switch_branch(working_dir, branch_name):
 # 删除分支
 def delete_branch(working_dir, branch_name):
     repo = Repository(working_dir + '.git')
+    print branch_name
     repo.branches.delete(branch_name)
 
 

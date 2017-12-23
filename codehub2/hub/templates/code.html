@@ -136,44 +136,7 @@
 </script>
 
    
-      <script>
-          function getSceneId() {
-          console.log("dddddddddd")
-             $.ajax({
-                 url: "{% url "CodeHub:newbranch" %}",
-                 type: "POST",
-                 data: post_data,
-             });
-         }
-   </script>
-   <script>
-     $('.dropdown-toggle').dropdown()
-      $('.dropdown-menu a').on('click', function(){
-       $(this).parent().parent().prev().html($(this).html() + '&nbsp;&nbsp;<span class="caret"></span>');
-       if($(this).parent().parent().prev().attr("id")==="switch"){
-            var to = ($("#switch").html()).split("&nbsp;&nbsp;");
-            to_branch = to[0];
-            $.post("{% url 'CodeHub:switchbranch' %}",{'tobranch':to_branch});
-       }
-      })
-   </script>
-   <script>
-      $(document).ready(function(){
-      // 合并分支
-      $("#merge_branch").click(function(){
-        var from = ($("#frombranch").html()).split("&nbsp;&nbsp;")
-        from_branch = from[0]
-        merge_msg = $("#mergemsg").val()
-        $.post("{% url 'CodeHub:mergebranch' %}",{'frombranch':from_branch,'message':merge_msg})
-      })
-      })
-   </script>
-   <script>
-       $(document).ready(function(){
-      // 切换分支
 
-      })
-   </script>
    <script>
      /*
      * Project: Twitter Bootstrap Hover Dropdown

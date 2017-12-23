@@ -40,6 +40,7 @@ def getZip(request):
     GitFileController.zip_dir('now_project_repo_path', 'hub/static/my-archive.zip')
     return HttpResponse('my-archive.zip')
 
+
 def code(request):
     print '进入代码界面'
 
@@ -127,52 +128,42 @@ def commit(request):
 
 def branch(request):
     print '进入分支界面'
-    data = GitFileController.show_branches_refs(request.session['now_project_repo_path'])
-    return render(request, 'branch.html', {'data': data})
 
-
-def create_branch(request):
-    print '创建分支'
     if request.method == "POST":
-        name = request.POST.get('new_branch')
-        GitFileController.new_branch(request.session['now_project_repo_path'], name)
-        status = 0
-        result = "Create new branch success!"
+        if request.POST.get('new_branch') != None:          #新建分支
+            name = request.POST.get('new_branch')
+            GitFileController.new_branch(request.session['now_project_repo_path'], name)
+            status = 0
+            result = "Create new branch success!"
+            print(result)
+        elif request.POST.get('branch_name') != None:            #删除分支
+            print request.POST.get('branch_name')
+            name = request.POST.get('branch_name')
+            GitFileController.delete_branch(request.session['now_project_repo_path'], name)
+            result = "Delete new branch sdsffsdf!"
+            print(result)
+        elif request.POST.get('frombranch') != None:        #合并分支
+            msg = request.POST.get('message')
+            frombranch = request.POST.get('frombranch')
+            print msg
+            frombranch_exist = GitFileController.merge(request.session['now_project_repo_path'],frombranch,msg)
+        elif request.POST.get('tobranch') != None:          #切换分支
+            tobranch = request.POST.get('tobranch')
+            print tobranch
+            GitFileController.switch_branch(request.session['now_project_repo_path'], tobranch)
+            request.session['head_branch']=tobranch
+    elif request.GET.get('branch_name') != None:            #删除分支
+        print request.GET.get('branch_name')
+        name = request.GET.get('branch_name')
+        GitFileController.delete_branch(request.session['now_project_repo_path'], name)
+        result = "Delete new branch success!"
         print(result)
-        data = GitFileController.show_branches_refs(request.session['now_project_repo_path'])
-        return render(request, 'branch.html', {'data': data})
-
-#def delete_branch(request):
-
-def delete_branch(request):
-    print '删除分支'
-    #if request.method == "POST":
-    name = request.GET.get('branch_name')
-    GitFileController.delete_branch(request.session['now_project_repo_path'], name)
-    result = "Delete new branch success!"
-    print(result)
+    print 'done'
     data = GitFileController.show_branches_refs(request.session['now_project_repo_path'])
+    print data
     return render(request, 'branch.html', {'data': data})
 
-def merge_branch(request):
-    print '合并分支'
-    frombranch = request.POST.get('frombranch')
-    msg = request.POST.get('message')
-    frombranch_exist = GitFileController.merge(request.session['now_project_repo_path'],frombranch,msg)
-    if frombranch_exist:
-        data = GitFileController.show_branches_refs(request.session['now_project_repo_path'])
-        return render(request, 'branch.html', {'data': data})
-    else:
-        data = GitFileController.show_branches_refs(request.session['now_project_repo_path'])
-        return render(request, 'branch.html', {'data': data})
 
-def switch_branch(request):
-    print '切换分支'
-    tobranch = request.POST.get('tobranch')
-    GitFileController.switch_branch(request.session['now_project_repo_path'], tobranch)
-    data = GitFileController.show_branches_refs(request.session['now_project_repo_path'])
-    request.session['head_branch']=tobranch
-    return render(request, 'branch.html', {'data': data})
 
 def login(request):
     print '进入登录界面'
