@@ -27,7 +27,7 @@
   <!--button type="button" class="btn btn-default">username</button-->
   
 
-	<p class="navbar-text" style="font-family:arial;color:black;float:right">username  <a href="#" class="navbar-link">退出</a></p>
+	<p class="navbar-text" style="font-family:arial;color:black;float:right">{{request.session.now_project_owner}} <a href="#" class="navbar-link">退出</a></p>
   </div>
 </nav>
  <br>
@@ -71,7 +71,7 @@
 </div>
 <form action="{% url 'CodeHub:process_new' %}" method="post" >
 <p style="float:left">&nbsp;&nbsp;</p>
-<p style="font-family:arial;color:black;font-size:20px;float:left"> <a href="#">projectname</a>&nbsp;&nbsp;/&nbsp;&nbsp;
+<p style="font-family:arial;color:black;font-size:20px;float:left"> <a href="#">{{request.session.now_project_name}}</a>&nbsp;&nbsp;/&nbsp;&nbsp;
   <div class="form-group">
     <input type="text" name="title" class="form-control" placeholder="输入新的文件名...">
   </div>
