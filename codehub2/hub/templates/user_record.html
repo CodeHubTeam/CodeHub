@@ -84,8 +84,8 @@
 			<div class="sidebar-scroll">
 				<nav>
 					<ul class="nav">
-						<li><a href="projectCatalog.html" class="active"><i class="lnr lnr-home"></i> <span>我的项目</span></a></li>
-						<li><a href="user_record.html" class=""><i class="lnr lnr-code"></i> <span>动态</span></a></li>
+						<li><a href="projectCatalog.html" class=""><i class="lnr lnr-home"></i> <span>我的项目</span></a></li>
+						<li><a href="user_record.html" class="active"><i class="lnr lnr-code"></i> <span>动态</span></a></li>
 
 					</ul>
 				</nav>
@@ -97,37 +97,19 @@
 		<div class="main">
 			<div class="page-header">
 
-				<strong>我的项目</strong>
+				<strong>我的项目动态</strong>
 
 			</div>
-			<div class="row">
-				{% for project in projects %}
-				<div <!-- class="col-md-2"ui relaxed horizontal selection list " -->
 
-					<div>
-						<!--有url变动的 <a href="{% url 'hub:index' %}/../{{project.lead_user}}/{{project.project_name}}">
-							<img src="../static/projectCatalog/assets/img/sc.png" width="120px" height="120px">
-						</a> -->
-						<a href="code.html?project_owner={{project.lead_user}}&project_name={{project.project_name}}">
-							<img src="../static/projectCatalog/assets/img/sc.png" width="120px" height="120px">
-						</a>
-					</div>
-					<h4>{{ project.project_name }}</h4>
-				</div>
-				{% endfor %}
-				{% if is_user %}
-				<div <!-- class="col-md-2"ui relaxed horizontal selection list " -->
+            <div>
+                <ul class="list-group">
+                    {% for rect in rec_det %}
+                        <a class="list-group-item list-group-item-info" href="#"><span>{{ rect.commit_time }}</span> &nbsp&nbsp&nbsp&nbsp
+                            <span >{{ request.session.user_name }}</span> &nbsp&nbsp&nbsp&nbsp <span>{{ rect.description }}</span></a>
+                    {% endfor %}
+                </ul>
+            </div>
 
-					<div >
-						<a href="{% url 'CodeHub:project_create' %}">
-							<img src="../static/projectCatalog/assets/img/add.png" width="120px" height="120px">
-						</a>
-					</div>
-					<h4>添加新的项目</h4>
-				</div>
-				{% endif %}
-								<!-- <div class="card-panel text-center">dsssccvd</div> -->
-			</div>
 		</div>
 		<!-- END MAIN -->
 		<div class="clearfix"></div>

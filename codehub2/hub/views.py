@@ -363,3 +363,13 @@ def delProject(request):
     msg = '删除了项目 '+request.session['now_project_name']
     user_commit.record(request.session['user_name'], msg)
     return HttpResponseRedirect(reverse('hub:profile'))
+
+def user_record(request):
+
+    rec_det = []
+    rec = user_commit.objects.filter(user_name=request.session['user_name'])
+    for i, j in enumerate(rec):
+        hh = user_commit.objects.get(pk = j.commit_id)
+        print hh
+        rec_det.append(user_commit.objects.get(pk = j.commit_id))
+    return render(request,'user_record.html',{"rec_det":rec_det})

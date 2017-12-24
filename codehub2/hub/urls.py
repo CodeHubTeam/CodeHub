@@ -40,6 +40,8 @@ urlpatterns = [
     
     url(r'^settings', views.settings,name='settings'),
     url(r'^delProject', views.delProject, name='delProject'),
+    url(r'^user_record', views.user_record),
+    url(r'^projectCatalog', views.profile),
     #url(r'^[\S]+/[\S]+/member', views.member,name='proMem'),
     #url(r'^(?P<project_owner>[\S]+)/(?P<project_name>[\S]+)/member', views.member,name='proMem'),
     #url(r'^member', views.proMem,name='proMem'),
