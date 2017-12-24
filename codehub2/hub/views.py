@@ -9,6 +9,8 @@ from .models import User, project_user, Project
 from django.shortcuts import get_object_or_404, render
 import pygit2
 import json
+from models import user_commit
+import time
 
 
 from . import GitFileController
@@ -104,6 +106,11 @@ def process_edit(request, *args, **kwargs):
     with open(request.session['now_project_repo_path']+file_name,'w') as f:
         f.write(data)
     GitFileController.change_commit(request.session['now_project_repo_path'],file_name,commit_message,request.session['user_name'],request.session['user_email'])
+
+    description = '在项目'+request.session['now_project_name']+'中的'+request.session['head_branch']+'分支进行了注释为 "'+commit_message+'" 的提交'
+    
+    user_commit.record(request.session['user_name'], description)
+
     return HttpResponseRedirect(reverse('hub:code_file'))
 
 def code_new(request):
@@ -122,6 +129,11 @@ def process_new(request, *args, **kwargs):
     with open(request.session['now_project_repo_path']+file_name,'w') as f:
         f.write(data)
     GitFileController.change_commit(request.session['now_project_repo_path'],file_name,commit_message,request.session['user_name'],request.session['user_email'])
+
+    description = '在项目'+request.session['now_project_name']+'中的'+request.session['head_branch']+'分支进行了注释为 "'+commit_message+'" 的提交'
+    
+    user_commit.record(request.session['user_name'], description)
+
     return HttpResponseRedirect(reverse('hub:code_file'))
 
 
@@ -140,12 +152,20 @@ def branch(request):
             name = request.POST.get('new_branch')
             GitFileController.new_branch(request.session['now_project_repo_path'], name)
             status = 0
+
+            msg = '在项目'+request.session['now_project_name']+'中新建了分支 '+name
+            user_commit.record(request.session['user_name'], msg)
+
             result = "Create new branch success!"
             print(result)
         elif request.POST.get('branch_name') != None:            #删除分支
             print request.POST.get('branch_name')
             name = request.POST.get('branch_name')
             GitFileController.delete_branch(request.session['now_project_repo_path'], name)
+
+            msg = '在项目'+request.session['now_project_name']+'中删除了分支 '+name
+            user_commit.record(request.session['user_name'], msg)
+
             result = "Delete new branch sdsffsdf!"
             print(result)
         elif request.POST.get('frombranch') != None:        #合并分支
@@ -162,6 +182,10 @@ def branch(request):
         print request.GET.get('branch_name')
         name = request.GET.get('branch_name')
         GitFileController.delete_branch(request.session['now_project_repo_path'], name)
+
+        msg = '在项目'+request.session['now_project_name']+'中删除了分支 '+name
+        user_commit.record(request.session['user_name'], msg)
+
         result = "Delete new branch success!"
         print(result)
     print 'done'
@@ -242,12 +266,14 @@ def project_create(request):
         description = request.POST.get('description')
         dir_name = codehub_path+request.session['user_name']+'/'+project_name
         repo_path = request.session['user_name']+'/'+project_name+'/'
-        
+        description = '暂时固定'
         GitFileController.create_working_dir(dir_name,request.session['user_name'],request.session['user_email'])
-        
-        tem = models.Project.objects.create(project_name = project_name,repo_path = repo_path,lead_user = get_object_or_404(User, pk=request.session['user_name']))
+        tem = models.Project.objects.create(project_name = project_name,description =description,repo_path = repo_path,lead_user = get_object_or_404(User, pk=request.session['user_name']))
         models.project_user.objects.create(project_id = tem.project_id,user_name = get_object_or_404(User, pk=request.session['user_name']))
         request.session['now_project_owner'],request.session['now_project_name'] = request.session['user_name'],project_name
+        
+        msg = '创建了项目 '+project_name
+        user_commit.record(request.session['user_name'], msg)
         return HttpResponseRedirect(reverse('hub:code'))
     #else:
     return render(request, 'projectCreate.html')
@@ -274,6 +300,10 @@ def member(request):
             if len(pp) == 0:
                 models.project_user.objects.create(project_id=pro_id, user_name=uu)
                 print ('ok')
+
+                msg = '在项目'+request.session['now_project_name']+'中添加了成员 '+name
+                user_commit.record(request.session['user_name'], msg)
+
             else:
                 print ('已存在')
 
@@ -287,6 +317,10 @@ def delMem(request):
     print name
     pro_id = request.session['now_project_id']
     models.project_user.objects.filter(project_id=pro_id,user_name=name).delete()
+
+    msg = '在项目'+request.session['now_project_name']+'中删除了成员 '+name
+    user_commit.record(request.session['user_name'], msg)
+
     all_members = models.project_user.objects.filter(project_id=pro_id)
     return render(request, 'member.html', {"members": all_members})
     pass
@@ -294,9 +328,7 @@ def delMem(request):
 
 def upload(request):
     print '上传'
-    if request.method == 'GET':
-        return render_to_response('upload.html')
-    elif request.method == 'POST':
+    if  request.method == 'POST':
         obj = request.FILES.get('fafafa')
         f = open(os.path.join('hub','repo',request.session['now_project_owner'],request.session['now_project_name'],obj.name),'wb')
         print f
@@ -305,9 +337,13 @@ def upload(request):
             f.write(line)
         f.close()
         print '33333333'
-        GitFileController.change_commit(codehub_path+os.path.join(request.session['now_project_owner'],request.session['now_project_name'])+'/',obj.name,'upload',request.session['user_name'],request.session['user_email'])
+        msg = '上传了'+obj.name
+        GitFileController.change_commit(request.session['now_project_repo_path'],obj.name,'上传了'+obj.name,request.session['user_name'],request.session['user_email'])
+        description = '在项目'+request.session['now_project_name']+'中的'+request.session['head_branch']+'分支进行了注释为 "'+msg+'" 的提交'
+        
+        user_commit.record(request.session['user_name'], description)
         print '********'
-        return render_to_response('upload.html')
+    return render_to_response('upload.html')
 
 
 def settings(request):
@@ -324,5 +360,6 @@ def delProject(request):
     models.Project.objects.filter(project_id=pro_id).delete()
     
     shutil.rmtree(request.session['now_project_repo_path'])
-
+    msg = '删除了项目 '+request.session['now_project_name']
+    user_commit.record(request.session['user_name'], msg)
     return HttpResponseRedirect(reverse('hub:profile'))

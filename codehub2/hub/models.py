@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
-
+from django.shortcuts import get_object_or_404
 
 # Create your models here.
 class User(models.Model):
@@ -25,6 +25,7 @@ class  Project(models.Model):
 	project_id = models.AutoField(primary_key=True)
 	project_name = models.CharField(max_length=100)
 	repo_path = models.CharField(max_length=100)
+	description = models.CharField(max_length=200)
 	lead_user = models.ForeignKey(User)
 	def __str__(self):
 		return self.project_name
@@ -40,11 +41,15 @@ class project_user(models.Model):
 	#def __init__(self, arg):
 	# 	super(Project_user, self).__init__()
 	# 	self.arg = arg
+
+import time
 class user_commit(models.Model):
-	commit_id = models.IntegerField(primary_key=True)
+	commit_id = models.AutoField(primary_key=True)
 	user_name = models.ForeignKey(User)
-	description = models.CharField(max_length=100)
-	branch_name = models.CharField(max_length=100)
+	description = models.CharField(max_length=200)
 	commit_time = models.DateTimeField()
-	def __str__(self):
-		return self.commit_id
+	@staticmethod
+	def record(usr_name, msg):
+		tt = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
+		user_commit.objects.create(user_name = get_object_or_404(User, pk=usr_name),description = msg,commit_time = tt)
+
