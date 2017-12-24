@@ -10,10 +10,11 @@ from django.shortcuts import get_object_or_404, render
 import pygit2
 import json
 
+
 from . import GitFileController
-#from mygit import *                 #去掉注释就使用了pygit2，没装pygit2请注释此行
 import os.path
-#codehub_path = '/Users/sxyzc/repo/'   #一般所有用户所在的目录，全局设置，迁移后自己修改
+
+#服务器仓库地址，所有用户所在的目录
 codehub_path = os.path.dirname(__file__)+'/repo/'
 
 
@@ -27,18 +28,6 @@ def mainPage(request):
 
 def code_test(request):
     return render(request,'code.html')
-
-def code_switch_branch(request):
-    print '切换分支'
-    tobranch = request.POST.get('tobranch')
-    GitFileController.switch_branch(request.session['now_project_repo_path'], tobranch)
-    request.session['head_branch']=tobranch
-    return HttpResponseRedirect(reverse('hub:code'))
-
-def getZip(request):
-    print '压缩中'
-    GitFileController.zip_dir(request.session['now_project_repo_path'], 'hub/static/my-archive.zip')
-    return HttpResponse('my-archive.zip')
 
 
 def code(request):
@@ -68,6 +57,24 @@ def code(request):
     print (codehub_path + project.repo_path)
     data = GitFileController.show_branches_refs(request.session['now_project_repo_path'])
     return render(request, 'code.html', {'project': project,'files': files,'data':data})
+
+
+
+
+def code_switch_branch(request):
+    print '切换分支'
+    tobranch = request.POST.get('tobranch')
+    GitFileController.switch_branch(request.session['now_project_repo_path'], tobranch)
+    request.session['head_branch']=tobranch
+    return HttpResponseRedirect(reverse('hub:code'))
+
+def getZip(request):
+    print '压缩中'
+    GitFileController.zip_dir(request.session['now_project_repo_path'], 'hub/static/my-archive.zip')
+    return HttpResponse('my-archive.zip')
+
+
+
 
 def code_edit(request):
     print '代码修改界面'
@@ -116,7 +123,6 @@ def process_new(request, *args, **kwargs):
         f.write(data)
     GitFileController.change_commit(request.session['now_project_repo_path'],file_name,commit_message,request.session['user_name'],request.session['user_email'])
     return HttpResponseRedirect(reverse('hub:code_file'))
-
 
 
 def commit(request):
