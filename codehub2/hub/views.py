@@ -301,7 +301,7 @@ def member(request):
                 models.project_user.objects.create(project_id=pro_id, user_name=name)
                 print ('ok')
 
-                msg = '在项目'+request.session['now_project_name']+'中添加了成员 '+ name
+                msg = '在项目'+ request.session['now_project_name'] + u'中添加了成员 '+ str(name)
                 user_commit.record(request.session['user_name'], msg)
 
             else:
