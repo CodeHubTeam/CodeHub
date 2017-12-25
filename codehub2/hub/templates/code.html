@@ -12,7 +12,8 @@
    </head-->
    <head>
    <meta charset="utf-8">
-   <title>bootstrap测试</title>
+   <title>CodeHub</title>
+   <link href="../static/Img/ele.jpg" rel="shortcut icon">
    <link href="/static/bootstrap.min.css" rel="stylesheet" />
 </head>
    <body>
@@ -63,7 +64,7 @@
 </form> -->
   <!-- <button type="button" id="cloneOrDownload" class="btn btn-default"><a href="download.html">Clone或下载</a></button> -->
   <div class="dropdown" style="float:left">
-      <button class="btn btn-default dropdown-toggle" type="button" id="cloneOrDownload" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      <button type="button" class="btn btn-default dropdown-toggle btn-info"  id="cloneOrDownload" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             下载
           <span class="caret"></span>
     </button>
@@ -76,6 +77,8 @@
       </ul>
 </div>
 </div>
+<br>
+<br>
 <br>
 <table class="table">
   {% for file in files %}

@@ -295,13 +295,13 @@ def member(request):
     else:
         ff = models.User.objects.filter(user_name=input_member)
         if len(ff) != 0:
-            uu = models.User.objects.get(user_name=input_member)
+            name = models.User.objects.get(user_name=input_member)
             pp = models.project_user.objects.filter(user_name=input_member,project_id=pro_id)
             if len(pp) == 0:
-                models.project_user.objects.create(project_id=pro_id, user_name=uu)
+                models.project_user.objects.create(project_id=pro_id, user_name=name)
                 print ('ok')
 
-                msg = '在项目'+request.session['now_project_name']+'中添加了成员 '+name
+                msg = '在项目'+request.session['now_project_name']+'中添加了成员 '+ name
                 user_commit.record(request.session['user_name'], msg)
 
             else:
@@ -318,7 +318,7 @@ def delMem(request):
     pro_id = request.session['now_project_id']
     models.project_user.objects.filter(project_id=pro_id,user_name=name).delete()
 
-    msg = '在项目'+request.session['now_project_name']+'中删除了成员 '+name
+    msg = '在项目'+request.session['now_project_name']+'中删除了成员 '+ name
     user_commit.record(request.session['user_name'], msg)
 
     all_members = models.project_user.objects.filter(project_id=pro_id)
