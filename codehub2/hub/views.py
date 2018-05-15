@@ -11,7 +11,10 @@ import pygit2
 import json
 from models import user_commit
 import time
+import sys
 
+reload(sys)
+sys.setdefaultencoding('utf8')  
 
 from . import GitFileController
 import os.path

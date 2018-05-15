@@ -22,7 +22,7 @@
 	<!-- ICONS -->
 	//<link rel="apple-touch-icon" sizes="76x76" href="../static/projectCatalog/assets/img/apple-icon.png">
 	<link rel="icon" type="image/png" sizes="96x96" href="../static/projectCatalog/assets/img/favicon.png">
-	<style type="text/css">
+	<style>
 		.row{
 			/*background-color: red;*/
 			margin: 20px;
@@ -32,17 +32,51 @@
 			margin: 20px;
 
 		}
-	</style>
-</head>
 
+			#msg{
+				height: 2rem;
+		   text-align: center;
+		   position: fixed;
+			top: 5%;
+			margin-top: -1rem;
+			line-height: 2rem;
+			width: 100%;
+			}
+			#msg span{
+				color: #ffffff;
+				background-color: #00aa00;
+				height: 2rem;
+				display: inline-block;
+				padding: 0 10rem;
+				border-radius: 5px;
+			}
+	</style>
+	<script>
+			function clearmsg(){
+					var t = setTimeout(function(){
+					$("#msg").remove();
+					},2000)
+			};
+			function alertNodd()
+			{
+			   var h = "不存在";
+			   $("body").append("<div id='msg'><span>"+ h +"</span></div>");
+			   clearmsg();  
+			}
+		</script>
+ 
+	
+</head>
+	
 <body>
+		
 	<!-- WRAPPER -->
 	<div id="wrapper">
 		<!-- NAVBAR -->
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="brand">
 {#				<a href="index.html"><img src="../static/projectCatalog/assets/img/logo-dark.png" alt="Klorofil Logo" class="img-responsive logo"></a>#}
-							<a href="index.html"><img src="../static/Img/codehubLogo.png"height="21px" width="120px"  alt="Klorofil Logo" class="img-responsive logo"></a>
+							<a href="mainPage.html"><img src="../static/Img/codehubLogo.png"height="21px" width="120px"  alt="Klorofil Logo" class="img-responsive logo"></a>
 
             </div>
 			<div class="container-fluid">
@@ -50,9 +84,9 @@
 					<button type="button" class="btn-toggle-fullwidth"><i class="lnr lnr-arrow-left-circle"></i></button>
 				</div>
 				<form class="navbar-form navbar-left">
-					<div class="input-group">
+					<div class="input-group"  >
 						<input type="text" value="" class="form-control" placeholder="寻找项目...">
-						<span class="input-group-btn"><button type="button" class="btn btn-primary">Go</button></span>
+						<span class="input-group-btn"><button onclick="alertNodd()" type="button" class="btn btn-primary">Go</button></span>
 					</div>
 				</form>
 				<div class="navbar-btn navbar-btn-right">
@@ -65,10 +99,10 @@
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="../static/projectCatalog/assets/img/user.png" class="img-circle" alt="Avatar"> <span>{{request.session.user_name}}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">
-								<li><a href="#"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
-								<li><a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a></li>
+								<li><a href="#"><i class="lnr lnr-user"></i> <span>期待</span></a></li>
+								{% comment %} <li><a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a></li>
 								<li><a href="#"><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>
-								<li><a href="#"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
+								<li><a href="#"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li> {% endcomment %}
 							</ul>
 						</li>
 						<!-- <li>
@@ -137,7 +171,7 @@
 			</div>
 		</footer>
 	</div>
-	<!-- END WRAPPER -->s
+	<!-- END WRAPPER -->
 	<!-- Javascript -->
 	<script src="../static/projectCatalog/assets/vendor/jquery/jquery.min.js"></script>
 	<script src="../static/projectCatalog/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -248,14 +282,14 @@
 		});
 
 		var updateInterval = 3000; // in milliseconds
-
+{% comment %} 
 		setInterval(function() {
 			var randomVal;
 			randomVal = getRandomInt(0, 100);
 
 			sysLoad.data('easyPieChart').update(randomVal);
 			sysLoad.find('.percent').text(randomVal);
-		}, updateInterval);
+		}, updateInterval); {% endcomment %}
 
 		function getRandomInt(min, max) {
 			return Math.floor(Math.random() * (max - min + 1)) + min;

@@ -25,7 +25,7 @@ SECRET_KEY = 'mw&3ee5t*1xh)@7_b5(k3m(&9785q6@l7y@2)=3((vy&(8l#pq'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['www.isoftware.site','127.0.0.1']
+ALLOWED_HOSTS = ['www.isoftware.site','127.0.0.1','codehub.isoftware.site']
 
 
 # Application definition
