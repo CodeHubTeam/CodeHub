@@ -111,6 +111,19 @@
    <script src="/static/jquery.min.js"></script>
    <script src="/static/bootstrap.min.js"></script>
 
+
+   <script>
+     $('.dropdown-toggle').dropdown()
+      $('.dropdown-menu a').on('click', function(){
+       $(this).parent().parent().prev().html($(this).html() + '&nbsp;&nbsp;<span class="caret"></span>');
+       if($(this).parent().parent().prev().attr("id")==="switch"){
+            var to = ($("#switch").html()).split("&nbsp;&nbsp;");
+            to_branch = to[0];
+            $.post("{% url 'CodeHub:branch' %}",{'tobranch':to_branch});
+       }
+      })
+   </script>
+
 <script>
     $(document).ready(function(){
       $("#cloneOrDownload").click(function(){
